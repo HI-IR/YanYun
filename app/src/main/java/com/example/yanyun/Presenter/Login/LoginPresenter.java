@@ -1,5 +1,6 @@
 package com.example.yanyun.Presenter.Login;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
@@ -10,8 +11,10 @@ import com.example.yanyun.Model.Login.ILoginModel;
 import com.example.yanyun.Model.Login.LoginModel;
 import com.example.yanyun.View.Login.ILoginView;
 
+import java.util.HashMap;
+
 /**
- * description ： 登录的演示层，完成登录业务逻辑
+ * description ： 登录的演示层，完成登录业务逻辑，记住密码
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/18 20:11
@@ -33,13 +36,29 @@ public class LoginPresenter implements DataCallback {
     @Override
     public void onDataParsed(LoginJson loginJson) {
         iLoginView.hideLoading();
-        if (loginJson.errorCode==-1){
+        if (loginJson.errorCode == -1) {
             iLoginView.showError(loginJson.errorMsg);
-        }else{
+        } else {
             iLoginView.ToHome();
         }
 
     }
+
+    @Override
+    public void onLoginData(HashMap<String, String> hashMap) {
+        iLoginView.EnterInf(hashMap.get("KEY_USERNAME"), hashMap.get("KEY_PASSWORD"));
+    }
+
+
+    public void rememberPassword(String username, String password, Boolean shouldRemember, Context context) {
+        iLoginModel.rememberPassword(username, password, shouldRemember, context);
+    }
+
+    //获取保存的登录信息
+    public void getLogin(){
+        iLoginModel.getLogin(this, iLoginView.myGetContext());
+    }
+
 
 
     private class Myhandler extends Handler {
@@ -47,7 +66,7 @@ public class LoginPresenter implements DataCallback {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                iLoginModel.parseJson((String) msg.obj,LoginPresenter.this);
+                iLoginModel.parseJson((String) msg.obj, LoginPresenter.this);
             }
         }
     }

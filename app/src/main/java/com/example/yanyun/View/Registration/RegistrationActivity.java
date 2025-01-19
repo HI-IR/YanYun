@@ -56,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity implements IRegView 
         Intent intent = new Intent(this, LoginActivity.class);
         intent.putExtra("username",mEtUsername.getText().toString());
         intent.putExtra("password",mEtPassword.getText().toString());
+        intent.putExtra("launchSource","RegistrationActivity");//用来在Login中判断是从RegistrationActivity中跳转而来
         startActivity(intent);
     }
 

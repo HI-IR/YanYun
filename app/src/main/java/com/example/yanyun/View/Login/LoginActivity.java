@@ -1,5 +1,6 @@
 package com.example.yanyun.View.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,14 +35,18 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     TextView mTvForget;
     LoginPresenter mLoginPresenter;
 
+
     @Override
     protected void onResume() {
         super.onResume();
-        if(getIntent()!=null){
+        mLoginPresenter.getLogin();
+        if (getIntent().hasExtra("launchSource") && getIntent().getStringExtra("launchSource").equals("RegistrationActivity")) {
             String username = getIntent().getStringExtra("username");
             String password = getIntent().getStringExtra("password");
-            EnterInf(username,password);
+            EnterInf(username, password);
         }
+
+
     }
 
     @Override
@@ -69,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mTvReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(LoginActivity.this, RegistrationActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -98,11 +103,12 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
+    //登录成功，进入Home页
     public void ToHome() {
+        mLoginPresenter.rememberPassword(mEtUserName.getText().toString(), mEtPassWord.getText().toString(), shouldRemember(), this);
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
-
 
 
     @Override
@@ -111,8 +117,18 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void EnterInf(String username,String password) {
+    public void EnterInf(String username, String password) {
         mEtUserName.setText(username);
         mEtPassWord.setText(password);
+    }
+
+    @Override
+    public boolean shouldRemember() {
+        return mCkRememberPassWord.isChecked();
+    }
+
+    @Override
+    public Context myGetContext() {
+        return this;
     }
 }
