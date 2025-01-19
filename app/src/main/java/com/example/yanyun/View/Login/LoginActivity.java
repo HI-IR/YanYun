@@ -1,4 +1,5 @@
 package com.example.yanyun.View.Login;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +12,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yanyun.Presenter.LoginPresenter;
+import com.example.yanyun.Presenter.Login.LoginPresenter;
 import com.example.yanyun.R;
 import com.example.yanyun.View.Home.HomeActivity;
+import com.example.yanyun.View.Registration.RegistrationActivity;
 
 /**
  * description ： Login的View层
@@ -22,7 +24,7 @@ import com.example.yanyun.View.Home.HomeActivity;
  * date : 2025/1/18 17:42
  */
 
-public class LoginActivity extends AppCompatActivity implements ILoginView{
+public class LoginActivity extends AppCompatActivity implements ILoginView {
     ProgressBar mProgressBar;
     EditText mEtUserName;
     EditText mEtPassWord;
@@ -31,6 +33,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     TextView mTvReg;
     TextView mTvForget;
     LoginPresenter mLoginPresenter;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getIntent()!=null){
+            String username = getIntent().getStringExtra("username");
+            String password = getIntent().getStringExtra("password");
+            EnterInf(username,password);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +56,35 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
      * 设置点击事件
      */
     private void initEvent() {
+        //登录按钮的点击事件
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showLoging();
-                mLoginPresenter.login(mEtUserName.getText().toString(),mEtPassWord.getText().toString());
+                mLoginPresenter.login(mEtUserName.getText().toString(), mEtPassWord.getText().toString());
+            }
+        });
+
+        //注册的点击事件
+        mTvReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(intent);
             }
         });
     }
 
     private void initView() {
-        mProgressBar=findViewById(R.id.progressBar);
-        mEtUserName=findViewById(R.id.et_login_username);
-        mEtPassWord=findViewById(R.id.et_login_password);
-        mBtnLogin=findViewById(R.id.btn_login_login);
-        mTvReg=findViewById(R.id.tv_login_reg);
-        mCkRememberPassWord=findViewById(R.id.ck_login_remember);
-        mTvForget=findViewById(R.id.tv_login_forget);
+        mProgressBar = findViewById(R.id.progressBar);
+        mEtUserName = findViewById(R.id.et_login_username);
+        mEtPassWord = findViewById(R.id.et_login_password);
+        mBtnLogin = findViewById(R.id.btn_login_login);
+        mTvReg = findViewById(R.id.tv_login_reg);
+        mCkRememberPassWord = findViewById(R.id.ck_login_remember);
+        mTvForget = findViewById(R.id.tv_login_forget);
 
-        mLoginPresenter= new LoginPresenter(this);
+        mLoginPresenter = new LoginPresenter(this);
     }
 
     @Override
@@ -76,18 +98,21 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     }
 
     @Override
-    public void doHome() {
+    public void ToHome() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public void doRegistration() {
 
+
+    @Override
+    public void showError(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showError() {
-        Toast.makeText(this,"密码错误",Toast.LENGTH_SHORT).show();
+    public void EnterInf(String username,String password) {
+        mEtUserName.setText(username);
+        mEtPassWord.setText(password);
     }
 }

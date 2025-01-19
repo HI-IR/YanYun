@@ -1,4 +1,4 @@
-package com.example.yanyun.Bean.JavaBean;
+package com.example.yanyun.Model.Bean.JavaBean;
 
 /**
  * description ： 用户类
