@@ -10,7 +10,7 @@ import android.content.Context;
  * date : 2025/1/18 17:48
  */
 public interface ILoginView {
-    void showLoging();//显示加载条
+    void showLoading();//显示加载条
 
     void hideLoading();//隐藏加载条
 

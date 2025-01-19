@@ -37,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity implements IRegView 
         mBtnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLoging();//显示加载条
+                showLoading();//显示加载条
                 mRegPresenter.doReg(mEtUsername.getText().toString(),mEtPassword.getText().toString());
             }
         });
@@ -61,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity implements IRegView 
     }
 
     @Override
-    public void showLoging() {
+    public void showLoading() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 

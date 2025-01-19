@@ -10,7 +10,7 @@ package com.example.yanyun.View.Registration;
 public interface IRegView {
     void ToLogin();//跳转登录页
 
-    void showLoging();//显示加载条
+    void showLoading();//显示加载条
 
     void hideLoading();//隐藏加载条
 

@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLoging();
+                showLoading();
                 mLoginPresenter.login(mEtUserName.getText().toString(), mEtPassWord.getText().toString());
             }
         });
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void showLoging() {
+    public void showLoading() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
