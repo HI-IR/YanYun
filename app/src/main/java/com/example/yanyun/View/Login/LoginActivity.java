@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yanyun.Presenter.Login.LoginPresenter;
 import com.example.yanyun.R;
-import com.example.yanyun.View.Home.HomeActivity;
+import com.example.yanyun.View.Main.MainActivity;
 import com.example.yanyun.View.Registration.RegistrationActivity;
 
 /**
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     //登录成功，进入Home页
     public void ToHome() {
         mLoginPresenter.rememberPassword(mEtUserName.getText().toString(), mEtPassWord.getText().toString(), shouldRemember(), this);
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

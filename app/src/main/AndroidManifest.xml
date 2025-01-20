@@ -19,7 +19,7 @@
             android:name=".View.Registration.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".View.Home.HomeActivity"
+            android:name=".View.Main.MainActivity"
             android:exported="false" />
         <activity
             android:name=".View.Login.LoginActivity"
