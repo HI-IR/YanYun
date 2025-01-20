@@ -52,7 +52,8 @@ public class LoginModel implements ILoginModel {
     @Override
     public void getLogin(DataCallback dataCallback, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
-        HashMap<String, String> hashMap = new HashMap<>();
+        HashMap hashMap = new HashMap<>();
+        hashMap.put("KEY_REMEMBER_PASSWORD",sharedPreferences.getBoolean("KEY_REMEMBER_PASSWORD",false));
         hashMap.put("KEY_USERNAME", sharedPreferences.getString("KEY_USERNAME", ""));
         hashMap.put("KEY_PASSWORD", sharedPreferences.getString("KEY_PASSWORD", ""));
         dataCallback.onLoginData(hashMap);

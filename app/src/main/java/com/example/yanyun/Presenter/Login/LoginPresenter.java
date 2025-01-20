@@ -45,8 +45,9 @@ public class LoginPresenter implements DataCallback {
     }
 
     @Override
-    public void onLoginData(HashMap<String, String> hashMap) {
-        iLoginView.EnterInf(hashMap.get("KEY_USERNAME"), hashMap.get("KEY_PASSWORD"));
+    public void onLoginData(HashMap hashMap) {
+        iLoginView.EnterInf((String) hashMap.get("KEY_USERNAME"),(String)hashMap.get("KEY_PASSWORD"));
+        iLoginView.check((boolean)hashMap.get("KEY_REMEMBER_PASSWORD"));
     }
 
 

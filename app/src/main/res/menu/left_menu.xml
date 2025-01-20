@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/item_menu_saying"
+            android:icon="@drawable/saying"
+            android:title="我喜欢的言"/>
+        <item
+            android:id="@+id/item_menu_poem"
+            android:icon="@drawable/poem"
+            android:title="我喜欢的诗"/>
+        <item
+            android:id="@+id/item_menu_image"
+            android:icon="@drawable/image"
+            android:title="我喜欢的图"/>
+
+
+</menu>

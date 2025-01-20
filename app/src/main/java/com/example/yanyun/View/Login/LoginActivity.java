@@ -131,4 +131,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     public Context myGetContext() {
         return this;
     }
+
+    @Override
+    public void check(boolean shouldRemember) {
+            mCkRememberPassWord.setChecked(shouldRemember);
+    }
 }
