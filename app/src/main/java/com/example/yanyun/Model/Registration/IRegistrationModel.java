@@ -2,8 +2,6 @@ package com.example.yanyun.Model.Registration;
 
 import android.os.Handler;
 
-import com.example.yanyun.Presenter.Registration.DataCallback;
-
 /**
  * description ：  RegistrationModel的接口
  * 注册,解析数据,
@@ -13,6 +11,5 @@ import com.example.yanyun.Presenter.Registration.DataCallback;
  */
 public interface IRegistrationModel {
     void doReg(String username, String password, Handler handler);//向服务端注册
-    void parseJson(String json, DataCallback dataCallback);
 
 }

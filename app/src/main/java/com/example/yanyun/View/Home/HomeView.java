@@ -39,19 +39,17 @@ public class HomeView extends Fragment implements IHomeView {
         mHomePresenter.initView();
 
 
-
-
         new TabLayoutMediator(mTab, mVP2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                if (position==0){
+                if (position == 0) {
                     tab.setText("言");
-                }
-                else if (position==1) {
+                } else if (position == 1) {
                     tab.setText("诗");
-                }
-                else{
+                } else if (position == 2) {
                     tab.setText("图");
+                } else {
+                    tab.setText("史");
                 }
             }
         }).attach();
@@ -61,16 +59,15 @@ public class HomeView extends Fragment implements IHomeView {
     }
 
     private void initView(View view) {
-        mHomePresenter=new HomePresenter(this);
-        mTab=view.findViewById(R.id.tab_tablayout);
-        mVP2=view.findViewById(R.id.vp2_home);
+        mHomePresenter = new HomePresenter(this);
+        mTab = view.findViewById(R.id.tab_tablayout);
+        mVP2 = view.findViewById(R.id.vp2_home);
     }
 
     @Override
     public void setAdapter(ArrayList<FragmentInterface> mFragments) {
-        mVP2.setAdapter(new HomeVp2Adapter(HomeView.this,mFragments));
+        mVP2.setAdapter(new HomeVp2Adapter(HomeView.this, mFragments));
     }
-
 
 
 }

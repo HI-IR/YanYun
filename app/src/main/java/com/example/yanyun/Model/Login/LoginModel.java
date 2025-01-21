@@ -7,7 +7,6 @@ import android.os.Handler;
 import com.example.yanyun.Model.Bean.Json.LoginJson;
 import com.example.yanyun.Presenter.Login.DataCallback;
 import com.example.yanyun.Utils.Net;
-import com.example.yanyun.View.Login.LoginActivity;
 
 import java.util.HashMap;
 
@@ -24,14 +23,9 @@ public class LoginModel implements ILoginModel {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("username", username);
         hashMap.put("password", password);
-        Net.doPost("https://www.wanandroid.com/user/login", hashMap, handler);
+        new Net().doPost("https://www.wanandroid.com/user/login", hashMap, handler, new LoginJson());
     }
 
-    @Override
-    public void parseJson(String json, DataCallback dataCallback) {
-        LoginJson loginJson = new LoginJson().decodeJson(json);
-        dataCallback.onDataParsed(loginJson);
-    }
 
     @Override
     public void rememberPassword(String username, String password, Boolean shouldRemember, Context context) {
@@ -53,7 +47,7 @@ public class LoginModel implements ILoginModel {
     public void getLogin(DataCallback dataCallback, Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
         HashMap hashMap = new HashMap<>();
-        hashMap.put("KEY_REMEMBER_PASSWORD",sharedPreferences.getBoolean("KEY_REMEMBER_PASSWORD",false));
+        hashMap.put("KEY_REMEMBER_PASSWORD", sharedPreferences.getBoolean("KEY_REMEMBER_PASSWORD", false));
         hashMap.put("KEY_USERNAME", sharedPreferences.getString("KEY_USERNAME", ""));
         hashMap.put("KEY_PASSWORD", sharedPreferences.getString("KEY_PASSWORD", ""));
         dataCallback.onLoginData(hashMap);

@@ -1,7 +1,5 @@
 package com.example.yanyun.Presenter.Login;
 
-import com.example.yanyun.Model.Bean.Json.LoginJson;
-
 import java.util.HashMap;
 
 /**
@@ -11,7 +9,5 @@ import java.util.HashMap;
  * date : 2025/1/19 10:01
  */
 public interface DataCallback {
-    void onDataParsed(LoginJson loginJson);//回调解析数据
-
     void onLoginData(HashMap<String, String> hashMap);//回调登录数据
 }

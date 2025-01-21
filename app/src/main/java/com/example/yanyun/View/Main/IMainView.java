@@ -13,5 +13,6 @@ import java.util.ArrayList;
  */
 public interface IMainView {
     void setAdapter(ArrayList<FragmentInterface> mFragments);
+
     void menuChanged(int position);//底部菜单栏颜色状态改变
 }

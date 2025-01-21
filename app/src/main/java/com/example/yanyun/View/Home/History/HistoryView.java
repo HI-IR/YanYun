@@ -1,4 +1,4 @@
-package com.example.yanyun.View.User;
+package com.example.yanyun.View.Home.History;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,16 +12,16 @@ import androidx.fragment.app.Fragment;
 import com.example.yanyun.R;
 
 /**
- * description ： 用户界面View
+ * description ： Home页的子Fragment--Image
  * author : HI-IR
  * email : qq2420226433@outlook.com
- * date : 2025/1/20 20:01
+ * date : 2025/1/21 13:32
  */
-public class UserView extends Fragment {
+public class HistoryView extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
         return view;
     }
 }

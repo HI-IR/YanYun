@@ -6,7 +6,7 @@ package com.example.yanyun.Model.Bean.Json;
  * email : qq2420226433@outlook.com
  * date : 2025/1/19 11:33
  */
-public class RegJson extends BaseJson{
+public class RegJson extends BaseJson {
 
 
     public DataBean data;

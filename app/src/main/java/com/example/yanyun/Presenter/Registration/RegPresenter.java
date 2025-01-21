@@ -10,8 +10,6 @@ import com.example.yanyun.Model.Registration.IRegistrationModel;
 import com.example.yanyun.Model.Registration.RegistrationModel;
 import com.example.yanyun.View.Registration.IRegView;
 
-import java.util.HashMap;
-
 
 /**
  * description ： 实现注册业务逻辑
@@ -19,37 +17,37 @@ import java.util.HashMap;
  * email : qq2420226433@outlook.com
  * date : 2025/1/19 10:34
  */
-public class RegPresenter implements DataCallback {
+public class RegPresenter {
     IRegView iRegView;
     IRegistrationModel iRegistrationModel;
     Handler handler;
-    public RegPresenter(IRegView view){
-        iRegView=view;
-        iRegistrationModel=new RegistrationModel();
-        handler= new MyHandler();
+
+    public RegPresenter(IRegView view) {
+        iRegView = view;
+        iRegistrationModel = new RegistrationModel();
+        handler = new MyHandler();
     }
 
-    public void doReg(String username,String password){
-        iRegistrationModel.doReg(username,password,handler);
+    public void doReg(String username, String password) {
+        iRegistrationModel.doReg(username, password, handler);
     }
 
-    @Override
     public void onDataParsed(RegJson regJson) {
-        if (regJson.errorCode==-1){
+        if (regJson.errorCode == -1) {
             iRegView.showError(regJson.errorMsg);
-        }else{
+        } else {
             iRegView.ToLogin();
         }
     }
 
 
-    private class MyHandler extends android.os.Handler{
+    private class MyHandler extends android.os.Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.what==1){
+            if (msg.what == 1) {
                 iRegView.hideLoading();//取消加载条
-                iRegistrationModel.parseJson((String)msg.obj,RegPresenter.this);
+                onDataParsed((RegJson) msg.obj);
             }
         }
     }

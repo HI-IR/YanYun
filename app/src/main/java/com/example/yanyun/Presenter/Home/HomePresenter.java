@@ -3,6 +3,7 @@ package com.example.yanyun.Presenter.Home;
 import androidx.fragment.app.Fragment;
 
 import com.example.yanyun.Presenter.FragmentInterface;
+import com.example.yanyun.View.Home.History.HistoryView;
 import com.example.yanyun.View.Home.IHomeView;
 import com.example.yanyun.View.Home.Image.ImageView;
 import com.example.yanyun.View.Home.Poem.PoemView;
@@ -28,8 +29,8 @@ public class HomePresenter {
     //建立View层的连接
 
     //初始化Home页
-    public void initView(){
-        ArrayList<FragmentInterface> fragments =new ArrayList<>();
+    public void initView() {
+        ArrayList<FragmentInterface> fragments = new ArrayList<>();
         fragments.add(new FragmentInterface() {
             @Override
             public Fragment back() {
@@ -46,6 +47,12 @@ public class HomePresenter {
             @Override
             public Fragment back() {
                 return new ImageView();
+            }
+        });
+        fragments.add(new FragmentInterface() {
+            @Override
+            public Fragment back() {
+                return new HistoryView();
             }
         });
 

@@ -10,8 +10,9 @@ import com.google.gson.Gson;
  */
 public class BaseJson {
     private final Gson gson;
-    public BaseJson(){
-        gson=new Gson();
+
+    public BaseJson() {
+        gson = new Gson();
     }
 
     /***
@@ -19,7 +20,7 @@ public class BaseJson {
      * @param json
      * @return
      */
-    public <T extends BaseJson> T decodeJson(String json){
+    public <T extends BaseJson> T decodeJson(String json) {
         return (T) gson.fromJson(json, this.getClass());
     }
 }

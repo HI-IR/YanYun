@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.yanyun.R;
 
 /**
- * description ： TODO:类的作用
+ * description ： 发现页View---发现页用来存放其他的小工具，随时增加
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/20 20:01

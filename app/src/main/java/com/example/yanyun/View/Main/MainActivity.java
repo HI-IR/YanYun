@@ -5,11 +5,10 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     ViewPager2 mVp2;
     MainPresenter mMainPresenter;
     BottomNavigationView mBottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId()==R.id.item_menu_saying){
-                    Toast.makeText(MainActivity.this,"我喜欢的言",Toast.LENGTH_SHORT).show();
-                } else if (item.getItemId()==R.id.item_menu_poem) {
-                    Toast.makeText(MainActivity.this,"我喜欢的诗",Toast.LENGTH_SHORT).show();
-                }else if(item.getItemId()==R.id.item_menu_image){
-                    Toast.makeText(MainActivity.this,"我喜欢的图",Toast.LENGTH_SHORT).show();
+                if (item.getItemId() == R.id.item_menu_saying) {
+                    Toast.makeText(MainActivity.this, "我喜欢的言", Toast.LENGTH_SHORT).show();
+                } else if (item.getItemId() == R.id.item_menu_poem) {
+                    Toast.makeText(MainActivity.this, "我喜欢的诗", Toast.LENGTH_SHORT).show();
+                } else if (item.getItemId() == R.id.item_menu_image) {
+                    Toast.makeText(MainActivity.this, "我喜欢的图", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -83,20 +83,20 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
-                    case R.id.menu_book:{
+                switch (item.getItemId()) {
+                    case R.id.menu_book: {
                         mVp2.setCurrentItem(0);
                         break;
                     }
-                    case R.id.menu_other:{
+                    case R.id.menu_other: {
                         mVp2.setCurrentItem(1);
                         break;
                     }
-                    case R.id.menu_user:{
+                    case R.id.menu_user: {
                         mVp2.setCurrentItem(2);
                         break;
                     }
-                    default:{
+                    default: {
                         break;
                     }
                 }
@@ -108,40 +108,41 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     }
 
 
-
     private void initView() {
-        mVp2=findViewById(R.id.viewPager2);
-        mDrawerLayout=findViewById(R.id.drawerlayout_home);
-        mNavigationView=findViewById(R.id.nv_home);
+        mVp2 = findViewById(R.id.viewPager2);
+        mDrawerLayout = findViewById(R.id.drawerlayout_home);
+        mNavigationView = findViewById(R.id.nv_home);
         mNavigationView.setItemIconTintList(null);//设置menu为原色
-        mToolbar=findViewById(R.id.toolbar_home);
-        mMainPresenter=new MainPresenter(this);
+        mToolbar = findViewById(R.id.toolbar_home);
+        mMainPresenter = new MainPresenter(this);
         mMainPresenter.initMain();
-        mBottomNavigationView=findViewById(R.id.bottomNavigationView);
+        mBottomNavigationView = findViewById(R.id.bottomNavigationView);
     }
 
     @Override
     public void setAdapter(ArrayList<FragmentInterface> mFragments) {
-        mVp2.setAdapter(new MainVp2Adapter(this,mFragments));
+        mVp2.setAdapter(new MainVp2Adapter(this, mFragments));
     }
 
     //底部菜单栏颜色状态改变
     @Override
     public void menuChanged(int position) {
-        switch (position){
-            case 0:{
+        switch (position) {
+            case 0: {
                 mBottomNavigationView.setSelectedItemId(R.id.menu_book);
                 break;
             }
-            case 1:{
+            case 1: {
                 mBottomNavigationView.setSelectedItemId(R.id.menu_other);
                 break;
             }
-            case 2:{
+            case 2: {
                 mBottomNavigationView.setSelectedItemId(R.id.menu_user);
                 break;
             }
-            default:{break;}
+            default: {
+                break;
+            }
         }
     }
 }

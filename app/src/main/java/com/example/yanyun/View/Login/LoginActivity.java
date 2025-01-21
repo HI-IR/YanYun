@@ -134,6 +134,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     @Override
     public void check(boolean shouldRemember) {
-            mCkRememberPassWord.setChecked(shouldRemember);
+        mCkRememberPassWord.setChecked(shouldRemember);
     }
 }

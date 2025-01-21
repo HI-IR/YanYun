@@ -19,9 +19,9 @@ public class HomeVp2Adapter extends FragmentStateAdapter {
 
     ArrayList<FragmentInterface> fragments;
 
-    public HomeVp2Adapter(@NonNull HomeView fragmentActivity, ArrayList<FragmentInterface>fragments) {
+    public HomeVp2Adapter(@NonNull HomeView fragmentActivity, ArrayList<FragmentInterface> fragments) {
         super(fragmentActivity);
-        this.fragments=fragments;
+        this.fragments = fragments;
     }
 
 

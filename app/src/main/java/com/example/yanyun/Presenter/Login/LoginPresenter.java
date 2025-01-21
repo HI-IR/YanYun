@@ -32,8 +32,7 @@ public class LoginPresenter implements DataCallback {
         iLoginModel.login(username, password, handler);
     }
 
-    //接收 Model 层解析后的数据
-    @Override
+    //对网络数据进行处理
     public void onDataParsed(LoginJson loginJson) {
         iLoginView.hideLoading();
         if (loginJson.errorCode == -1) {
@@ -41,13 +40,12 @@ public class LoginPresenter implements DataCallback {
         } else {
             iLoginView.ToHome();
         }
-
     }
 
     @Override
     public void onLoginData(HashMap hashMap) {
-        iLoginView.EnterInf((String) hashMap.get("KEY_USERNAME"),(String)hashMap.get("KEY_PASSWORD"));
-        iLoginView.check((boolean)hashMap.get("KEY_REMEMBER_PASSWORD"));
+        iLoginView.EnterInf((String) hashMap.get("KEY_USERNAME"), (String) hashMap.get("KEY_PASSWORD"));
+        iLoginView.check((boolean) hashMap.get("KEY_REMEMBER_PASSWORD"));
     }
 
 
@@ -56,10 +54,9 @@ public class LoginPresenter implements DataCallback {
     }
 
     //获取保存的登录信息
-    public void getLogin(){
+    public void getLogin() {
         iLoginModel.getLogin(this, iLoginView.myGetContext());
     }
-
 
 
     private class Myhandler extends Handler {
@@ -67,7 +64,7 @@ public class LoginPresenter implements DataCallback {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                iLoginModel.parseJson((String) msg.obj, LoginPresenter.this);
+                onDataParsed((LoginJson) msg.obj);
             }
         }
     }

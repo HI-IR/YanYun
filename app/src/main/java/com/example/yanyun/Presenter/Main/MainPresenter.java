@@ -11,7 +11,7 @@ import com.example.yanyun.View.User.UserView;
 import java.util.ArrayList;
 
 /**
- * description ： TODO:类的作用
+ * description ： MainView的Presenter
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/20 20:13
@@ -25,8 +25,8 @@ public class MainPresenter {
     }
 
     //初始化MainActivity
-    public void initMain(){
-        ArrayList<FragmentInterface>fragments=new ArrayList<>();
+    public void initMain() {
+        ArrayList<FragmentInterface> fragments = new ArrayList<>();
         fragments.add(new FragmentInterface() {
             @Override
             public Fragment back() {
@@ -50,7 +50,7 @@ public class MainPresenter {
     }
 
     //当ViewPager2的其他页面被选中时
-    public void onPagerSelected(int position){
+    public void onPagerSelected(int position) {
         iMainView.menuChanged(position);
     }
 

@@ -8,11 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.yanyun.Presenter.Registration.RegPresenter;
 import com.example.yanyun.R;
@@ -38,25 +34,25 @@ public class RegistrationActivity extends AppCompatActivity implements IRegView 
             @Override
             public void onClick(View v) {
                 showLoading();//显示加载条
-                mRegPresenter.doReg(mEtUsername.getText().toString(),mEtPassword.getText().toString());
+                mRegPresenter.doReg(mEtUsername.getText().toString(), mEtPassword.getText().toString());
             }
         });
     }
 
     private void initView() {
-        mEtUsername=findViewById(R.id.et_reg_username);
-        mEtPassword=findViewById(R.id.et_reg_password);
-        mBtnReg=findViewById(R.id.btn_reg_reg);
+        mEtUsername = findViewById(R.id.et_reg_username);
+        mEtPassword = findViewById(R.id.et_reg_password);
+        mBtnReg = findViewById(R.id.btn_reg_reg);
         mRegPresenter = new RegPresenter(this);
-        mProgressBar=findViewById(R.id.reg_progressBar);
+        mProgressBar = findViewById(R.id.reg_progressBar);
     }
 
     @Override
     public void ToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("username",mEtUsername.getText().toString());
-        intent.putExtra("password",mEtPassword.getText().toString());
-        intent.putExtra("launchSource","RegistrationActivity");//用来在Login中判断是从RegistrationActivity中跳转而来
+        intent.putExtra("username", mEtUsername.getText().toString());
+        intent.putExtra("password", mEtPassword.getText().toString());
+        intent.putExtra("launchSource", "RegistrationActivity");//用来在Login中判断是从RegistrationActivity中跳转而来
         startActivity(intent);
     }
 
@@ -72,6 +68,6 @@ public class RegistrationActivity extends AppCompatActivity implements IRegView 
 
     @Override
     public void showError(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
