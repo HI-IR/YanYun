@@ -101,6 +101,56 @@ public class Net<T extends BaseJson> {
 
 
     /***
+     * 网络访问get(带请求头)
+     * @param url 基础url
+     * @param handler 传入handler,message代号为0
+     * @param jsonBean 传入一个对应JsonBean的实体类进来
+     * @param RequestProperty 请求头参数
+     */
+
+    public void doGet(String url,Handler handler,T jsonBean,HashMap<String,String> RequestProperty){
+        new Thread(new Runnable() {
+            String resultStr = "";
+
+            @Override
+            public void run() {
+
+                try {
+                    URL Url = new URL(url);
+                    HttpURLConnection connection = (HttpURLConnection) Url.openConnection();
+                    //配置连接参数
+                    connection.setConnectTimeout(5 * 1000);
+                    connection.setRequestMethod("GET");
+                    for(String i:RequestProperty.keySet()){
+                        connection.setRequestProperty(i,RequestProperty.get(i));
+                    }
+
+                    //建立连接
+                    connection.connect();
+
+                    InputStream inputStream = connection.getInputStream();
+                    resultStr = StreamToString(inputStream);
+                    Log.d("ld", resultStr);
+
+                    T result = jsonBean.decodeJson(resultStr);
+
+                    Message message = new Message();
+                    message.what = 0;
+                    message.obj = result;
+                    handler.sendMessage(message);
+
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
+    }
+
+
+
+
+    /***
      * 网络访问POST
      * @param url   网址
      * @param hashMap   参数

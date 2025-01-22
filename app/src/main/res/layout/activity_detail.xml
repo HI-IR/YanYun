@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_poem_title"
+            android:id="@+id/tv_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -23,7 +23,7 @@
             android:fontFamily="@font/font_2"
             android:gravity="center"
             android:text="标题title"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             tools:layout_editor_absoluteX="135dp"
@@ -31,62 +31,27 @@
             />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_poem_from"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/font_1"
-        android:text="这是作者"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_poem_2"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <TextView
-        android:id="@+id/tv_poem_1"
+        android:id="@+id/tv_detail_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/font_1"
-        android:text="】"
+        android:text="xxxx/xx/xx"
         android:textColor="@color/gray"
         android:textSize="18sp"
 
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
-    <TextView
-        android:id="@+id/tv_poem_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/font_1"
-        android:text="【"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-
-        app:layout_constraintEnd_toStartOf="@+id/tv_poem_dynasty"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
-
-    <TextView
-        android:id="@+id/tv_poem_dynasty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/font_1"
-        android:text="朝代"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_poem_1"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <ScrollView
         android:layout_width="344dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,27 +59,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_poem_content"
+                android:id="@+id/tv_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/font_2"
                 android:gravity="start"
-                android:text="这是一个诗词内容"
-                android:textSize="30sp"
+                android:text="这是故事内容"
+                android:textSize="17sp"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- 加载进度条 -->
-    <ProgressBar
-        android:id="@+id/progressBar_poem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -136,34 +92,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView2"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@android:color/transparent"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu_2"
-        app:itemBackground="@android:color/transparent"
-        app:itemIconTint="@color/white"
-
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

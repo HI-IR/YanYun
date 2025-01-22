@@ -17,4 +17,15 @@
         <item name="android:drawablePadding">2dp</item>
     </style>
 
+    <!-- 在res/values/styles.xml中修改主题 -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 确保底部导航栏不显示选中背景 -->
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
+    </style>
+
+    <!-- 创建一个自定义样式 -->
+    <style name="CustomBottomNavigationView">
+        <item name="itemBackground">@android:color/transparent</item> <!-- 选项背景透明 -->
+    </style>
+
 </resources>

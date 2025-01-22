@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_collection"
+        android:icon="@drawable/uncollected"
+        android:itemBackground="@android:color/transparent"
+        android:title="喜欢"/>
+    <group
+        android:id="@+id/group_divider">
+        <item android:id="@+id/menu_refresh"
+            android:icon="@drawable/refresh_1"
+            android:itemBackground="@android:color/transparent"
+            android:title="刷新"/>
+    </group>
+</menu>
