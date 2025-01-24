@@ -22,10 +22,11 @@ import java.util.HashMap;
 public class LoginPresenter implements DataCallback {
     Handler handler = new Myhandler();
     ILoginView iLoginView;
-    ILoginModel iLoginModel = new LoginModel();
+    ILoginModel iLoginModel;
 
-    public LoginPresenter(ILoginView View) {
+    public LoginPresenter(ILoginView View,Context context) {
         iLoginView = View;
+        iLoginModel = new LoginModel(context);
     }
 
     public void login(String username, String password) {
@@ -37,8 +38,11 @@ public class LoginPresenter implements DataCallback {
         iLoginView.hideLoading();
         if (loginJson.errorCode == -1) {
             iLoginView.showError(loginJson.errorMsg);
+
         } else {
             iLoginView.ToHome();
+            iLoginModel.saveLoginedUser(loginJson.data.id);
+            iLoginModel.insertUser(loginJson);
         }
     }
 

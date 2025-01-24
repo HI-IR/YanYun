@@ -19,4 +19,8 @@ public interface IPoemView {
     void setInfo(PoemJson poemJson);//设置数据
 
     void showError(String msg);//显示错误信息
+
+    void setCollected();//设置已收藏
+
+    void setUnCollected();//设置未收藏
 }

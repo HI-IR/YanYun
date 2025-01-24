@@ -1,5 +1,6 @@
 package com.example.yanyun.presenter.home.image;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
@@ -21,14 +22,24 @@ public class ImagePresenter {
     IImageView imageView;
     IImageModel imageModel;
 
-    public ImagePresenter(IImageView imageView) {
+    public ImagePresenter(IImageView imageView, Context context) {
         this.imageView = imageView;
-        imageModel = new ImageModel();
+        imageModel = new ImageModel(context);
         handler = new MyHandler();
     }
 
     public void doUpdateInfo(int count) {
         imageModel.GetPoem(handler,count);
+    }
+
+    //收藏
+    public void Collect(String content,String author){
+        imageModel.Collection(content,author);
+    }
+
+    //取消收藏
+    public void unCollect(String content){
+        imageModel.unCollection(content);
     }
 
     class MyHandler extends Handler {
@@ -46,4 +57,20 @@ public class ImagePresenter {
             }
         }
     }
+
+
+    public void isCollected(String content){
+        imageModel.isCollected(content, new IImageModel.callback() {
+            @Override
+            public void onCollected() {
+                imageView.setCollected();
+            }
+
+            @Override
+            public void onUnCollected() {
+                imageView.setUnCollected();
+            }
+        });
+    }
+
 }

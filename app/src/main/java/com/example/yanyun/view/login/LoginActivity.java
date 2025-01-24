@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mCkRememberPassWord = findViewById(R.id.ck_login_remember);
         mTvForget = findViewById(R.id.tv_login_forget);
 
-        mLoginPresenter = new LoginPresenter(this);
+        mLoginPresenter = new LoginPresenter(this,this);
     }
 
     @Override
