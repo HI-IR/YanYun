@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * email : qq2420226433@outlook.com
  * date : 2025/1/20 19:11
  */
-public class HomeView extends Fragment implements IHomeView {
+public class HomeActivity extends Fragment implements IHomeActivity {
     private TabLayout mTab;
     private ViewPager2 mVP2;
     private HomePresenter mHomePresenter;
@@ -66,7 +66,7 @@ public class HomeView extends Fragment implements IHomeView {
 
     @Override
     public void setAdapter(ArrayList<FragmentInterface> mFragments) {
-        mVP2.setAdapter(new HomeVp2Adapter(HomeView.this, mFragments));
+        mVP2.setAdapter(new HomeVp2Adapter(HomeActivity.this, mFragments));
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.yanyun.view.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import com.example.yanyun.presenter.FragmentInterface;
 import com.example.yanyun.presenter.main.MainPresenter;
 import com.example.yanyun.presenter.main.MainVp2Adapter;
 import com.example.yanyun.R;
+import com.example.yanyun.view.collection.CollectionActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     private ViewPager2 mVp2;
     private MainPresenter mMainPresenter;
     private BottomNavigationView mBottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +55,21 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_menu_saying) {
                     Toast.makeText(MainActivity.this, "我喜欢的言", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
+                    intent.putExtra("goal","Saying");
+                    startActivity(intent);
+
                 } else if (item.getItemId() == R.id.item_menu_poem) {
                     Toast.makeText(MainActivity.this, "我喜欢的诗", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
+                    intent.putExtra("goal","Poem");
+                    startActivity(intent);
+
                 } else if (item.getItemId() == R.id.item_menu_image) {
                     Toast.makeText(MainActivity.this, "我喜欢的图", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
+                    intent.putExtra("goal","Image");
+                    startActivity(intent);
                 }
                 return true;
             }

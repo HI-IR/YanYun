@@ -1,27 +1,28 @@
-package com.example.yanyun.presenter.home;
+package com.example.yanyun.presenter.collection;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.yanyun.presenter.FragmentInterface;
-import com.example.yanyun.view.home.HomeActivity;
+import com.example.yanyun.view.collection.CollectionActivity;
 
 import java.util.ArrayList;
 
 /**
- * description ： Home页的ViewePager2的适配器
+ * description ： 收藏的Adapter
  * author : HI-IR
  * email : qq2420226433@outlook.com
- * date : 2025/1/20 19:27
+ * date : 2025/1/25 17:47
  */
-public class HomeVp2Adapter extends FragmentStateAdapter {
-
+public class CollectionAdapter extends FragmentStateAdapter {
     ArrayList<FragmentInterface> fragments;
 
-    public HomeVp2Adapter(@NonNull HomeActivity fragmentActivity, ArrayList<FragmentInterface> fragments) {
+    public CollectionAdapter(@NonNull CollectionActivity fragmentActivity,ArrayList<FragmentInterface> fragments) {
         super(fragmentActivity);
         this.fragments = fragments;
+
     }
 
 

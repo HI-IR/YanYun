@@ -1,6 +1,6 @@
 package com.example.yanyun.database.dao;
+
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -18,6 +18,15 @@ import java.util.List;
 @Dao
 public interface FavoriteDao {
 
+    @Query("SELECT COUNT(*) FROM favorites WHERE favorite_type = 'Saying' AND user_id = :user_id")
+    int countSayingByid(Long user_id);
+
+    @Query("SELECT COUNT(*) FROM favorites WHERE favorite_type = 'Poem' AND user_id = :user_id")
+    int countPoemByid(Long user_id);
+
+    @Query("SELECT COUNT(*) FROM favorites WHERE favorite_type = 'Image' AND user_id = :user_id")
+    int countImageByid(Long user_id);
+
     // 查询是否存在相同内容的数据
     @Query("SELECT COUNT(*) FROM favorites WHERE favorite_content = :content AND user_id = :user_id")
     int countByContent(String content,Long user_id);
@@ -29,13 +38,13 @@ public interface FavoriteDao {
     void DeleteDataByContent(String content);//删除收藏
 
     @Query("SELECT * FROM favorites WHERE user_id =:user_id AND favorite_type = 'Saying' ORDER BY favorite_id")
-    List<FavoriteEntity> FindFavoriteSayingByid(String user_id);
+    List<FavoriteEntity> FindFavoriteSayingByid(long user_id);
 
-    @Query("SELECT * FROM favorites WHERE user_id =:user_id AND favorite_type = 'Peom' ORDER BY favorite_id")
-    List<FavoriteEntity> FindFavoritePeomByid(String user_id);
+    @Query("SELECT * FROM favorites WHERE user_id =:user_id AND favorite_type = 'Poem' ORDER BY favorite_id")
+    List<FavoriteEntity> FindFavoritePoemByid(long user_id);
 
-    @Query("SELECT * FROM favorites WHERE user_id =:user_id AND favorite_type = 'Imag' ORDER BY favorite_id")
-    List<FavoriteEntity> FindFavoriteImageByid(String user_id);
+    @Query("SELECT * FROM favorites WHERE user_id =:user_id AND favorite_type = 'Image' ORDER BY favorite_id")
+    List<FavoriteEntity> FindFavoriteImageByid(long user_id);
 
 
 }

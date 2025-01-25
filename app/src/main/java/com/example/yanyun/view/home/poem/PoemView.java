@@ -54,12 +54,12 @@ public class PoemView extends Fragment implements IPoemView {
 
                         if (clickCount % 2 == 1) {
                             item.setIcon(R.drawable.collected);
-                            String content = mTitle.getText().toString() + "\n" + mContent.getText().toString();
+                            String content = mTitle.getText().toString() + "|" + mContent.getText().toString();
                             String author = "["+mDynasty.getText().toString()+"]"+mFrom.getText().toString();
                             mPoemPresenter.Collect(content, author);
                         } else {
                             item.setIcon(R.drawable.uncollected);
-                            String content = mTitle.getText().toString() + "\n" + mContent.getText().toString();
+                            String content = mTitle.getText().toString() + "\t" + mContent.getText().toString();
                             mPoemPresenter.unCollect(content);
                         }
                         break;

@@ -3,15 +3,169 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-460dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488"
+        app:shapeAppearanceOverlay="@style/circleImageStyle" />
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView">
+        <TextView
+            android:id="@+id/tv_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user_name"
+            android:textSize="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="，你好！"
+            android:textSize="25sp"/>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+        android:id="@+id/textview2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="345dp"
-        android:text="user"
+        android:fontFamily="@font/font_2"
+        android:layout_marginTop="10dp"
+        android:text="\n你一共收藏了:"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/layout1"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:id="@+id/gridlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textview2"
+        android:columnCount="3">
+        <LinearLayout
+            android:layout_gravity=""
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+            <TextView
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="美言"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_user_SayingCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="n"
+                android:textColor="#881010"
+                android:textSize="32sp"
+                android:fontFamily="@font/font_1"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+            <TextView
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="诗歌"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+
+                android:id="@+id/tv_user_PoemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="n"
+                android:textColor="#881010"
+                android:textSize="32sp"
+                android:fontFamily="@font/font_1"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="首"/>
+
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1">
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="美图"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+
+            android:id="@+id/tv_user_ImageCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="n"
+            android:textColor="#881010"
+            android:textSize="32sp"
+            android:fontFamily="@font/font_1"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="张"/>
+
+    </LinearLayout>
+    </GridLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/CV_user"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="6dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/selector_item"
+        app:layout_constraintTop_toBottomOf="@id/gridlayout">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的收藏"
+            android:textSize="16sp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
