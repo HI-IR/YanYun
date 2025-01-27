@@ -4,6 +4,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.yanyun.MyApplication;
 import com.example.yanyun.database.dao.FavoriteDao;
 import com.example.yanyun.database.dao.UsersDao;
 import com.example.yanyun.database.entity.FavoriteEntity;

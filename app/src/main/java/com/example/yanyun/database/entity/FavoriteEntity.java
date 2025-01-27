@@ -19,82 +19,83 @@ import androidx.room.PrimaryKey;
         indices = {@Index(value = {"user_id"})})//为 user_id 列创建索引,索引能够加快数据库的查询速度
 public class FavoriteEntity {
     @PrimaryKey(autoGenerate = true)
-    private int favorite_id;
+    @ColumnInfo(name = "favorite_id")
+    private int favoriteId;
 
-    @ColumnInfo
-    private long user_id;
+    @ColumnInfo(name = "user_id")
+    private long userId;
 
 
     /**
      *type即为收藏的类型：Saying(美言),Poem(诗歌),Image(美图)
      */
-    @ColumnInfo
-    private String favorite_type;
+    @ColumnInfo(name = "favorite_type")
+    private String favoriteType;
 
     //收藏的具体内容
-    @ColumnInfo
-    private String favorite_content;
+    @ColumnInfo(name = "favorite_content")
+    private String favoriteContent;
 
-    @ColumnInfo
-    private String favorite_author;
+    @ColumnInfo(name = "favorite_author")
+    private String favoriteAuthor;
 
-    @ColumnInfo
-    private String favorite_time;
+    @ColumnInfo(name = "favorite_time")
+    private String favoriteTime;
 
 
-    public FavoriteEntity(long user_id, String favorite_type, String favorite_content, String favorite_author, String favorite_time) {
-        this.user_id = user_id;
-        this.favorite_type = favorite_type;
-        this.favorite_content = favorite_content;
-        this.favorite_author = favorite_author;
-        this.favorite_time = favorite_time;
+    public FavoriteEntity(long userId, String favoriteType, String favoriteContent, String favoriteAuthor, String favoriteTime) {
+        this.userId = userId;
+        this.favoriteType = favoriteType;
+        this.favoriteContent = favoriteContent;
+        this.favoriteAuthor = favoriteAuthor;
+        this.favoriteTime = favoriteTime;
     }
 
-    public int getFavorite_id() {
-        return favorite_id;
+    public int getFavoriteId() {
+        return favoriteId;
     }
 
-    public void setFavorite_id(int favorite_id) {
-        this.favorite_id = favorite_id;
+    public void setFavoriteId(int favoriteId) {
+        this.favoriteId = favoriteId;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getFavorite_type() {
-        return favorite_type;
+    public String getFavoriteType() {
+        return favoriteType;
     }
 
-    public void setFavorite_type(String favorite_type) {
-        this.favorite_type = favorite_type;
+    public void setFavoriteType(String favoriteType) {
+        this.favoriteType = favoriteType;
     }
 
-    public String getFavorite_content() {
-        return favorite_content;
+    public String getFavoriteContent() {
+        return favoriteContent;
     }
 
-    public void setFavorite_content(String favorite_content) {
-        this.favorite_content = favorite_content;
+    public void setFavoriteContent(String favoriteContent) {
+        this.favoriteContent = favoriteContent;
     }
 
-    public String getFavorite_time() {
-        return favorite_time;
+    public String getFavoriteAuthor() {
+        return favoriteAuthor;
     }
 
-    public void setFavorite_time(String favorite_time) {
-        this.favorite_time = favorite_time;
+    public void setFavoriteAuthor(String favoriteAuthor) {
+        this.favoriteAuthor = favoriteAuthor;
     }
 
-    public String getFavorite_author() {
-        return favorite_author;
+    public String getFavoriteTime() {
+        return favoriteTime;
     }
 
-    public void setFavorite_author(String favorite_author) {
-        this.favorite_author = favorite_author;
+    public void setFavoriteTime(String favoriteTime) {
+        this.favoriteTime = favoriteTime;
     }
 }

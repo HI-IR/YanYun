@@ -4,12 +4,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.yanyun.model.bean.json.BaseJson;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -20,8 +21,8 @@ import java.util.HashMap;
  * email : qq2420226433@outlook.com
  * date : 2025/1/18 20:18
  */
-public class Net<T extends BaseJson> {
-
+public class Net<T> {
+    static final Gson GSON = new Gson();
     /***
      * 将输入流转化为字符串
      * @param inputStream   输入流
@@ -48,7 +49,7 @@ public class Net<T extends BaseJson> {
      * @param handler   传入handler,message代号为0
      * @param jsonBean  传入一个对应JsonBean的实体类进来
      */
-    public void doGet(String url, Handler handler, T jsonBean) {
+    public void doGet(String url, Handler handler, Type jsonBean) {
         new Thread(new Runnable() {
             String resultStr = "";
 
@@ -68,7 +69,8 @@ public class Net<T extends BaseJson> {
                     resultStr = StreamToString(inputStream);
                     Log.d("ld", resultStr);
 
-                    T result = jsonBean.decodeJson(resultStr);
+
+                    T result = GSON.fromJson(resultStr,jsonBean);
 
                     Message message = new Message();
                     message.what = 0;
@@ -90,7 +92,7 @@ public class Net<T extends BaseJson> {
      * @param handler   传入handler,message代号为0
      * @param jsonBean  传入一个对应JsonBean的实体类进来
      */
-    public void doGet(String baseurl, HashMap<String, String> map, Handler handler, T jsonBean) {
+    public void doGet(String baseurl, HashMap<String, String> map, Handler handler, Type jsonBean) {
         StringBuilder stringBuilder = new StringBuilder(baseurl).append("?");
         for (String key : map.keySet()) {
             stringBuilder.append(key).append("=").append(map.get(key)).append("&");
@@ -108,7 +110,7 @@ public class Net<T extends BaseJson> {
      * @param RequestProperty 请求头参数
      */
 
-    public void doGet(String url,Handler handler,T jsonBean,HashMap<String,String> RequestProperty){
+    public void doGet(String url,Handler handler,Type jsonBean,HashMap<String,String> RequestProperty){
         new Thread(new Runnable() {
             String resultStr = "";
 
@@ -132,7 +134,8 @@ public class Net<T extends BaseJson> {
                     resultStr = StreamToString(inputStream);
                     Log.d("ld", resultStr);
 
-                    T result = jsonBean.decodeJson(resultStr);
+
+                    T result = GSON.fromJson(resultStr,jsonBean);
 
                     Message message = new Message();
                     message.what = 0;
@@ -157,7 +160,7 @@ public class Net<T extends BaseJson> {
      * @param handler   传入handler,message代号为1
      * @param jsonBean  传入一个对应JsonBean的实体类进来
      */
-    public void doPost(String url, HashMap<String, String> hashMap, Handler handler, T jsonBean) {
+    public void doPost(String url, HashMap<String, String> hashMap, Handler handler, Type jsonBean) {
         new Thread(new Runnable() {
             String resultStr = "";
 
@@ -189,7 +192,7 @@ public class Net<T extends BaseJson> {
                     Log.d("ld", resultStr);
 
                     //将String格式的Json转化为JsonBean类
-                    T result = jsonBean.decodeJson(resultStr);
+                    T result = GSON.fromJson(resultStr,jsonBean);
                     Message message = new Message();
                     message.what = 1;
                     message.obj = result;
