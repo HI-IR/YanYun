@@ -72,7 +72,7 @@ public class SayingModel implements ISayingModel {
                 //取消收藏
                 YanYunDatabase db = YanYunDatabase.getDatabase();
                 FavoriteDao favoriteDao = db.getFavoriteDao();
-                favoriteDao.DeleteDataByContent(content);
+                favoriteDao.DeleteDataByContent(content,user_id);
             }
         }).start();
     }

@@ -16,6 +16,7 @@ import com.example.yanyun.MyApplication;
 import com.example.yanyun.database.entity.FavoriteEntity;
 
 import java.util.ArrayList;
+import android.util.Base64;
 
 /**
  * description ： 收藏的Image的Adapter
@@ -42,11 +43,13 @@ public class CollectionImageAdapter extends RecyclerView.Adapter<CollectionImage
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FavoriteEntity favoriteEntity = favorites.get(position);
 
-        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.loading)
-                .fallback(R.drawable.error);
-        Glide.with(holder.mImg).load(favoriteEntity.getFavoriteContent()).apply(requestOptions).into(holder.mImg);
+        //将Base64编码的字节数组转化为字节数组
+        byte[] decode = Base64.decode(favoriteEntity.getFavoriteContent(), Base64.DEFAULT);
+
+        Glide.with(holder.mImg).load(decode).placeholder(R.drawable.loading).fallback(R.drawable.error).into(holder.mImg);
         //设置版权信息
-        holder.mCopyright .setText(favoriteEntity.getFavoriteAuthor());
+
+        holder.mCopyright.setText(favoriteEntity.getFavoriteAuthor());
     }
 
     @Override

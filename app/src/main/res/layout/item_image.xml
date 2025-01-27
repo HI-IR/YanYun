@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
@@ -27,13 +29,16 @@
             android:id="@+id/tv_collection_iamge_copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:fontFamily="@font/font_1"
+            android:gravity="start"
             android:text="这是版权"
             android:textColor="@color/gray"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:breakStrategy="simple"
+
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_collection_image_image"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -45,7 +50,7 @@
             android:src="@drawable/collected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_collection_iamge_copyright"
+            app:layout_constraintTop_toBottomOf="@+id/tv_collection_iamge_copyright"
             app:layout_constraintVertical_bias="0.058" />
 
 

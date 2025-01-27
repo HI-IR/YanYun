@@ -66,7 +66,7 @@ public class ImageFragment extends Fragment implements IImageView {
                             imagePresenter.Collect(imgurl, copyright);
                         }else{
                             item.setIcon(R.drawable.uncollected);
-                            imagePresenter.unCollect(imgurl);
+                            imagePresenter.unCollect(copyright);
                         }
                         break;
                     }
@@ -122,7 +122,7 @@ public class ImageFragment extends Fragment implements IImageView {
         hideLoading();
 
         //检查是否收藏，收藏则显示红星
-        imagePresenter.isCollected(imgurl);
+        imagePresenter.isCollected(copyright);
 
     }
 

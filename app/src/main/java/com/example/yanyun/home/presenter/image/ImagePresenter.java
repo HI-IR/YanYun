@@ -42,8 +42,8 @@ public class ImagePresenter {
     }
 
     //取消收藏
-    public void unCollect(String content){
-        imageModel.unCollection(content);
+    public void unCollect(String author){
+        imageModel.unCollection(author);
     }
 
     class MyHandler extends Handler {
@@ -71,8 +71,8 @@ public class ImagePresenter {
     }
 
 
-    public void isCollected(String content){
-        imageModel.isCollected(content, new IImageModel.callback() {
+    public void isCollected(String author){
+        imageModel.isCollected(author, new IImageModel.callback() {
             @Override
             public void onCollected() {
                 imageView.setCollected();
