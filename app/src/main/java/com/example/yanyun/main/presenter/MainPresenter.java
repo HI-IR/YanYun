@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import com.example.yanyun.FragmentInterface;
 import com.example.yanyun.home.view.HomeActivity;
 import com.example.yanyun.main.view.IMainView;
-import com.example.yanyun.other.view.OtherFragment;
 import com.example.yanyun.user.view.UserFragment;
 
 import java.util.ArrayList;
@@ -31,12 +30,6 @@ public class MainPresenter {
             @Override
             public Fragment back() {
                 return new HomeActivity();
-            }
-        });
-        fragments.add(new FragmentInterface() {
-            @Override
-            public Fragment back() {
-                return new OtherFragment();
             }
         });
         fragments.add(new FragmentInterface() {

@@ -102,10 +102,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                         mVp2.setCurrentItem(0);
                         break;
                     }
-                    case R.id.menu_other: {
-                        mVp2.setCurrentItem(1);
-                        break;
-                    }
                     case R.id.menu_user: {
                         mVp2.setCurrentItem(2);
                         break;
@@ -147,10 +143,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                 break;
             }
             case 1: {
-                mBottomNavigationView.setSelectedItemId(R.id.menu_other);
-                break;
-            }
-            case 2: {
                 mBottomNavigationView.setSelectedItemId(R.id.menu_user);
                 break;
             }
