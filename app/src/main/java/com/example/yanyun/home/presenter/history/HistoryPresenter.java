@@ -47,13 +47,16 @@ public class HistoryPresenter {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                HistoryApiWapper<HistoryJson> temp = (HistoryApiWapper<HistoryJson>) msg.obj;
-                if (temp.code==1){
-                    presenter.get().iHistoryView.setInfo(temp);
+                if (msg.obj.equals("error")){
+                    iHistoryView.showError("网络错误，请稍后重试");
                 }else{
-                    iHistoryView.showError(temp.msg);
+                    HistoryApiWapper<HistoryJson> temp = (HistoryApiWapper<HistoryJson>) msg.obj;
+                    if (temp.code==1){
+                        presenter.get().iHistoryView.setInfo(temp);
+                    }else{
+                        iHistoryView.showError(temp.msg);
+                    }
                 }
-
             }
         }
     }

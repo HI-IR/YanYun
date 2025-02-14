@@ -102,6 +102,7 @@ public class LoginModel implements ILoginModel {
         }).start();
     }
 
+    //保存登录数据
     @Override
     public void saveLoginedUser(long user_id) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences("loginedUser",Context.MODE_PRIVATE);

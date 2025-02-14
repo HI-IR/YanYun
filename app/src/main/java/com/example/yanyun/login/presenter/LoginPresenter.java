@@ -31,6 +31,7 @@ public class LoginPresenter implements DataCallback {
         iLoginModel = new LoginModel(context);
     }
 
+    //点击登录后调用Model登录
     public void login(String username, String password) {
         iLoginModel.login(username, password, handler);
     }
@@ -66,6 +67,7 @@ public class LoginPresenter implements DataCallback {
 
 
     private class Myhandler extends Handler {
+        //采用弱引用的方式，避免内存泄露
         WeakReference<LoginPresenter> loginPresenterWeakReference;
 
         public Myhandler(LoginPresenter loginPresenter) {
@@ -77,7 +79,13 @@ public class LoginPresenter implements DataCallback {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                loginPresenterWeakReference.get().onDataParsed((LoginJson) msg.obj);
+                if (msg.obj .equals("error")){
+                    iLoginView.hideLoading();
+                    iLoginView.showError("网络错误，请稍后重试");
+                }
+                else {
+                    loginPresenterWeakReference.get().onDataParsed((LoginJson) msg.obj);
+                }
             }
         }
     }

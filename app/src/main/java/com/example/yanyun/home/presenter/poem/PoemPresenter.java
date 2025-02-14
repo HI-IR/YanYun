@@ -36,7 +36,7 @@ public class PoemPresenter {
         iPoemModel.GetPoem(handler);
     }
 
-    static class MyHandler extends  Handler{
+     class MyHandler extends  Handler{
         WeakReference<PoemPresenter>  presenter;
         public MyHandler(PoemPresenter presenter) {
             super(Looper.getMainLooper());
@@ -47,16 +47,20 @@ public class PoemPresenter {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                PoemJson temp = (PoemJson) msg.obj;
-                if (temp.status.equals("success")) {
-                    PoemPresenter poemPresenter = presenter.get();
-                    if (poemPresenter!=null){
-                        poemPresenter.iPoemView.setInfo(temp);
-                    }
-                } else {
-                    PoemPresenter poemPresenter = presenter.get();
-                    if (poemPresenter!=null){
-                       poemPresenter.iPoemView.showError(temp.status);
+                if (msg.obj.equals("error")){
+                    iPoemView.showError("网络错误，请稍后重试");
+                }else{
+                    PoemJson temp = (PoemJson) msg.obj;
+                    if (temp.status.equals("success")) {
+                        PoemPresenter poemPresenter = presenter.get();
+                        if (poemPresenter!=null){
+                            poemPresenter.iPoemView.setInfo(temp);
+                        }
+                    } else {
+                        PoemPresenter poemPresenter = presenter.get();
+                        if (poemPresenter!=null){
+                            poemPresenter.iPoemView.showError(temp.status);
+                        }
                     }
                 }
             }

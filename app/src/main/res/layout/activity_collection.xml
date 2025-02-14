@@ -9,7 +9,7 @@
         android:id="@+id/toolbar_collection"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/blue"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back">
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_2"
             android:text="我的收藏"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@color/gray"
+        app:tabSelectedTextColor="@color/gray"/>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp2_collection"
         android:layout_width="match_parent"

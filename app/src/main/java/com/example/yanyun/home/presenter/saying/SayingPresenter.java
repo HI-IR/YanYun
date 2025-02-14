@@ -74,11 +74,15 @@ public class SayingPresenter {
             super.handleMessage(msg);
             //判断是由get返回的数据
             if (msg.what == 0) {
-                SayingJson temp = (SayingJson) msg.obj;
-                if (temp.success) {
-                    sayingPresenterWeakReference.get().iSayingView.setInfo(temp);
-                } else {
-                    sayingPresenterWeakReference.get().iSayingView.showError(temp.message);
+                if (msg.obj.equals("error")){
+                    iSayingView.showError("网络错误，请稍后重试");
+                }else{
+                    SayingJson temp = (SayingJson) msg.obj;
+                    if (temp.success) {
+                        sayingPresenterWeakReference.get().iSayingView.setInfo(temp);
+                    } else {
+                        sayingPresenterWeakReference.get().iSayingView.showError(temp.message);
+                    }
                 }
             }
         }

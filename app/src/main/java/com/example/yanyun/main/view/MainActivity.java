@@ -54,19 +54,16 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_menu_saying) {
-                    Toast.makeText(MainActivity.this, "我喜欢的言", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
                     intent.putExtra("goal","Saying");
                     startActivity(intent);
 
                 } else if (item.getItemId() == R.id.item_menu_poem) {
-                    Toast.makeText(MainActivity.this, "我喜欢的诗", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
                     intent.putExtra("goal","Poem");
                     startActivity(intent);
 
                 } else if (item.getItemId() == R.id.item_menu_image) {
-                    Toast.makeText(MainActivity.this, "我喜欢的图", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
                     intent.putExtra("goal","Image");
                     startActivity(intent);
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             }
         });
 
+        //设置底部导航栏点击事件
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

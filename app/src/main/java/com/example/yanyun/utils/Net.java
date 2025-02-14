@@ -23,6 +23,7 @@ import java.util.HashMap;
  */
 public class Net<T> {
     static final Gson GSON = new Gson();
+
     /***
      * 将输入流转化为字符串
      * @param inputStream   输入流
@@ -70,7 +71,7 @@ public class Net<T> {
                     Log.d("ld", resultStr);
 
 
-                    T result = GSON.fromJson(resultStr,jsonBean);
+                    T result = GSON.fromJson(resultStr, jsonBean);
 
                     Message message = new Message();
                     message.what = 0;
@@ -79,7 +80,10 @@ public class Net<T> {
 
 
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    Message message = new Message();
+                    message.what = 0;
+                    message.obj = "error";
+                    handler.sendMessage(message);
                 }
             }
         }).start();
@@ -110,7 +114,7 @@ public class Net<T> {
      * @param RequestProperty 请求头参数
      */
 
-    public void doGet(String url,Handler handler,Type jsonBean,HashMap<String,String> RequestProperty){
+    public void doGet(String url, Handler handler, Type jsonBean, HashMap<String, String> RequestProperty) {
         new Thread(new Runnable() {
             String resultStr = "";
 
@@ -123,8 +127,8 @@ public class Net<T> {
                     //配置连接参数
                     connection.setConnectTimeout(5 * 1000);
                     connection.setRequestMethod("GET");
-                    for(String i:RequestProperty.keySet()){
-                        connection.setRequestProperty(i,RequestProperty.get(i));
+                    for (String i : RequestProperty.keySet()) {
+                        connection.setRequestProperty(i, RequestProperty.get(i));
                     }
 
                     //建立连接
@@ -135,7 +139,7 @@ public class Net<T> {
                     Log.d("ld", resultStr);
 
 
-                    T result = GSON.fromJson(resultStr,jsonBean);
+                    T result = GSON.fromJson(resultStr, jsonBean);
 
                     Message message = new Message();
                     message.what = 0;
@@ -144,13 +148,14 @@ public class Net<T> {
 
 
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    Message message = new Message();
+                    message.what = 0;
+                    message.obj = "error";
+                    handler.sendMessage(message);
                 }
             }
         }).start();
     }
-
-
 
 
     /***
@@ -192,14 +197,17 @@ public class Net<T> {
                     Log.d("ld", resultStr);
 
                     //将String格式的Json转化为JsonBean类
-                    T result = GSON.fromJson(resultStr,jsonBean);
+                    T result = GSON.fromJson(resultStr, jsonBean);
                     Message message = new Message();
                     message.what = 1;
                     message.obj = result;
                     handler.sendMessage(message);
 
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    Message message = new Message();
+                    message.what = 1;
+                    message.obj = "error";
+                    handler.sendMessage(message);
                 }
             }
         }).start();

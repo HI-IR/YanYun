@@ -59,12 +59,16 @@ public class ImagePresenter {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                ImageApiWapper<ImageJson> temp = (ImageApiWapper<ImageJson>) msg.obj;
-                if (temp.status == 1) {
+                if (msg.obj.equals("error")){
+                    imageView.showError("网络错误，请稍后重试");
+                }else {
+                    ImageApiWapper<ImageJson> temp = (ImageApiWapper<ImageJson>) msg.obj;
+                    if (temp.status == 1) {
 
-                    imageViewWeakReference.get().imageView.setInfo(temp);
-                } else {
-                    imageViewWeakReference.get().imageView.showError("发生错误，请稍后重试");
+                        imageViewWeakReference.get().imageView.setInfo(temp);
+                    } else {
+                        imageViewWeakReference.get().imageView.showError("发生错误，请稍后重试");
+                    }
                 }
             }
         }
