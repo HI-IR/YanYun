@@ -1,5 +1,6 @@
 package com.example.yanyun.collection.view.saying;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,17 @@ public class CollectionSayingFragment extends Fragment implements ICollectionSay
     RecyclerView mRV;
     CollectionSayingPresenter presenter;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null && getActivity().getWindow() != null) {
+            // 设置状态栏颜色
+            getActivity().getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+
+            // 设置状态栏图标颜色（浅色背景用黑色图标）
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

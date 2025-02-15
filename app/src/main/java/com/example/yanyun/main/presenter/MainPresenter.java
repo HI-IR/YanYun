@@ -3,7 +3,7 @@ package com.example.yanyun.main.presenter;
 import androidx.fragment.app.Fragment;
 
 import com.example.yanyun.FragmentInterface;
-import com.example.yanyun.home.view.HomeActivity;
+import com.example.yanyun.home.view.HomeFragment;
 import com.example.yanyun.main.view.IMainView;
 import com.example.yanyun.user.view.UserFragment;
 
@@ -29,7 +29,7 @@ public class MainPresenter {
         fragments.add(new FragmentInterface() {
             @Override
             public Fragment back() {
-                return new HomeActivity();
+                return new HomeFragment();
             }
         });
         fragments.add(new FragmentInterface() {

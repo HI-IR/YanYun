@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.yanyun.FragmentInterface;
-import com.example.yanyun.home.view.HomeActivity;
+import com.example.yanyun.home.view.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class HomeVp2Adapter extends FragmentStateAdapter {
 
     ArrayList<FragmentInterface> fragments;
 
-    public HomeVp2Adapter(@NonNull HomeActivity fragmentActivity, ArrayList<FragmentInterface> fragments) {
+    public HomeVp2Adapter(@NonNull HomeFragment fragmentActivity, ArrayList<FragmentInterface> fragments) {
         super(fragmentActivity);
         this.fragments = fragments;
     }

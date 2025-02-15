@@ -3,7 +3,7 @@ package com.example.yanyun.home.presenter;
 import androidx.fragment.app.Fragment;
 
 import com.example.yanyun.FragmentInterface;
-import com.example.yanyun.home.view.IHomeActivity;
+import com.example.yanyun.home.view.IHomeFragment;
 import com.example.yanyun.home.view.history.HistoryFragment;
 import com.example.yanyun.home.view.image.ImageFragment;
 import com.example.yanyun.home.view.poem.PoemFragment;
@@ -18,10 +18,10 @@ import java.util.ArrayList;
  * date : 2025/1/20 19:24
  */
 public class HomePresenter {
-    IHomeActivity iHomeActivity;
+    IHomeFragment iHomeFragment;
 
-    public HomePresenter(IHomeActivity view) {
-        this.iHomeActivity = view;
+    public HomePresenter(IHomeFragment view) {
+        this.iHomeFragment = view;
 
     }
 
@@ -56,7 +56,7 @@ public class HomePresenter {
             }
         });
 
-        iHomeActivity.setAdapter(fragments);
+        iHomeFragment.setAdapter(fragments);
     }
 
 

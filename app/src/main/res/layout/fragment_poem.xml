@@ -81,7 +81,10 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <ScrollView
-        android:layout_width="344dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"

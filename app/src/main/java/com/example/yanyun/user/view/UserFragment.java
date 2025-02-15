@@ -1,6 +1,7 @@
 package com.example.yanyun.user.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,21 @@ public class UserFragment extends Fragment implements IUserFragment {
     TextView mImageCount;
     CardView mCvToCollection;
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getUserInfo();
+        if (getActivity() != null && getActivity().getWindow() != null) {
+            // 设置状态栏颜色
+            getActivity().getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+
+
+            // 设置状态栏图标颜色（浅色背景用黑色图标）
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
+    }
 
     @Nullable
     @Override
@@ -66,9 +82,14 @@ public class UserFragment extends Fragment implements IUserFragment {
 
     @Override
     public void setUserInfo(HashMap<String, String> counts) {
-        mUserName.setText(counts.get("UserName"));
-        mImageCount.setText(counts.get("ImageCount"));
-        mPoemCount.setText(counts.get("PoemCount"));
-        mSayingCount.setText(counts.get("SayingCount"));
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mUserName.setText(counts.get("UserName")+"，你好！");
+                mImageCount.setText(counts.get("ImageCount"));
+                mPoemCount.setText(counts.get("PoemCount"));
+                mSayingCount.setText(counts.get("SayingCount"));
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.example.yanyun.home.view.history;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,18 @@ public class HistoryFragment extends Fragment implements IHistoryView {
     private ProgressBar mProgressBar;
     private RecyclerView mRecyclerView;
     private HistoryPresenter mHistoryPresenter;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null && getActivity().getWindow() != null) {
+            // 设置状态栏颜色
+            getActivity().getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+
+            // 设置状态栏图标颜色（浅色背景用黑色图标）
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
 
     @Nullable
     @Override

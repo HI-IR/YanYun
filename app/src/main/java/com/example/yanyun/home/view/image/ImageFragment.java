@@ -1,5 +1,6 @@
 package com.example.yanyun.home.view.image;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -39,6 +40,18 @@ public class ImageFragment extends Fragment implements IImageView {
     //缓存一下当前图片的网址和版权信息
     private String imgurl;
     private String copyright;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null && getActivity().getWindow() != null) {
+            // 设置状态栏颜色
+            getActivity().getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+
+            // 设置状态栏图标颜色（浅色背景用黑色图标）
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
 
     @Nullable
     @Override
