@@ -46,7 +46,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-
     <android.widget.Button
         android:id="@+id/btn_reg_reg"
         android:layout_width="320dp"

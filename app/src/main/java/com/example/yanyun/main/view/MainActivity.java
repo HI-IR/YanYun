@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +13,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.yanyun.FragmentInterface;
-import com.example.yanyun.main.presenter.MainPresenter;
-import com.example.yanyun.main.presenter.MainVp2Adapter;
 import com.example.yanyun.R;
 import com.example.yanyun.collection.view.CollectionActivity;
+import com.example.yanyun.main.presenter.MainPresenter;
+import com.example.yanyun.main.presenter.MainVp2Adapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,17 +54,17 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_menu_saying) {
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
-                    intent.putExtra("goal","Saying");
+                    intent.putExtra("goal", "Saying");
                     startActivity(intent);
 
                 } else if (item.getItemId() == R.id.item_menu_poem) {
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
-                    intent.putExtra("goal","Poem");
+                    intent.putExtra("goal", "Poem");
                     startActivity(intent);
 
                 } else if (item.getItemId() == R.id.item_menu_image) {
                     Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
-                    intent.putExtra("goal","Image");
+                    intent.putExtra("goal", "Image");
                     startActivity(intent);
                 }
                 return true;

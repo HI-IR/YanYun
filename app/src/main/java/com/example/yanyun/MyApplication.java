@@ -12,13 +12,13 @@ import android.content.Context;
 public class MyApplication extends Application {
     private static Application context;
 
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        context=this;
-    }
-
-    public static Context getContext(){
-        return context;
+        context = this;
     }
 }

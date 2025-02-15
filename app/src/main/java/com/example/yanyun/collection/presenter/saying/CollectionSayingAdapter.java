@@ -52,13 +52,14 @@ public class CollectionSayingAdapter extends RecyclerView.Adapter<CollectionSayi
         return favorites.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView mContent;
         TextView mAuthor;
         View view;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mContent =itemView.findViewById(R.id.tv_collection_saying_content);
+            mContent = itemView.findViewById(R.id.tv_collection_saying_content);
             mAuthor = itemView.findViewById(R.id.tv_collection_saying_author);
             view = itemView;
         }

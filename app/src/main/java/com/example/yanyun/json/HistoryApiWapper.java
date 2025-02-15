@@ -12,7 +12,7 @@ import java.util.List;
  * email : qq2420226433@outlook.com
  * date : 2025/1/27 14:21
  */
-public class HistoryApiWapper<T>  {
+public class HistoryApiWapper<T> {
     private static final Gson GSON = new Gson();
     @SerializedName("code")
     public int code;
@@ -30,6 +30,6 @@ public class HistoryApiWapper<T>  {
      * @return
      */
     public HistoryApiWapper<T> decodeJson(String json, TypeToken<HistoryApiWapper<T>> typeToken) {
-        return  GSON.fromJson(json, typeToken.getType());
+        return GSON.fromJson(json, typeToken.getType());
     }
 }

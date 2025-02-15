@@ -8,10 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.yanyun.json.HistoryApiWapper;
-import com.example.yanyun.json.HistoryJson;
 import com.example.yanyun.R;
 import com.example.yanyun.home.view.history.IHistoryView;
+import com.example.yanyun.json.HistoryApiWapper;
+import com.example.yanyun.json.HistoryJson;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,10 +42,10 @@ public class HistoryRvAdapter extends RecyclerView.Adapter<HistoryRvAdapter.View
             @Override
             public void onClick(View v) {
                 HistoryJson historyJson = mList.get(holder.getAdapterPosition());
-                HashMap<String,String> hashMap =new HashMap<>();
-                hashMap.put("title",historyJson.title);
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("title", historyJson.title);
                 StringBuilder sb = new StringBuilder();
-                hashMap.put("date",sb.append(historyJson.year).append("/").append(historyJson.month).append("/").append(historyJson.day).toString());
+                hashMap.put("date", sb.append(historyJson.year).append("/").append(historyJson.month).append("/").append(historyJson.day).toString());
                 hashMap.put("content", historyJson.details);
                 iHistoryView.toDetail(hashMap);
             }
@@ -61,10 +61,8 @@ public class HistoryRvAdapter extends RecyclerView.Adapter<HistoryRvAdapter.View
         holder.mTitle.setText(dataBean.title);
 
         //设置日期
-        StringBuilder sb = new StringBuilder();
         //拼接年/月/日
-        sb.append(dataBean.year).append("/").append(dataBean.month).append("/").append(dataBean.day);
-        holder.mDate.setText(sb.toString());
+        holder.mDate.setText(dataBean.year + "/" + dataBean.month + "/" + dataBean.day);
     }
 
     @Override
@@ -72,16 +70,16 @@ public class HistoryRvAdapter extends RecyclerView.Adapter<HistoryRvAdapter.View
         return mList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final View itemView;
         public TextView mTitle;
         public TextView mDate;
-        private View itemView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mTitle = itemView.findViewById(R.id.tv_card_title);
             mDate = itemView.findViewById(R.id.tv_card_date);
-            this.itemView=itemView;
+            this.itemView = itemView;
         }
     }
 }

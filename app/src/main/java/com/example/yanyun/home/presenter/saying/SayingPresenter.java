@@ -7,10 +7,10 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 
-import com.example.yanyun.json.SayingJson;
 import com.example.yanyun.home.model.sayingModel.ISayingModel;
 import com.example.yanyun.home.model.sayingModel.SayingModel;
 import com.example.yanyun.home.view.saying.ISayingFragment;
+import com.example.yanyun.json.SayingJson;
 
 import java.lang.ref.WeakReference;
 
@@ -37,16 +37,16 @@ public class SayingPresenter {
     }
 
     //收藏
-    public void Collect(String content,String author){
-        iSayingModel.Collection(content,author);
+    public void Collect(String content, String author) {
+        iSayingModel.Collection(content, author);
     }
 
     //取消收藏
-    public void unCollect(String content){
+    public void unCollect(String content) {
         iSayingModel.unCollection(content);
     }
 
-    public void isCollected(String content){
+    public void isCollected(String content) {
         iSayingModel.isCollected(content, new ISayingModel.Callback() {
             @Override
             public void onCollected() {
@@ -74,9 +74,9 @@ public class SayingPresenter {
             super.handleMessage(msg);
             //判断是由get返回的数据
             if (msg.what == 0) {
-                if (msg.obj.equals("error")){
+                if (msg.obj.equals("error")) {
                     iSayingView.showError("网络错误，请稍后重试");
-                }else{
+                } else {
                     SayingJson temp = (SayingJson) msg.obj;
                     if (temp.success) {
                         sayingPresenterWeakReference.get().iSayingView.setInfo(temp);

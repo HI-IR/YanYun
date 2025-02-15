@@ -18,7 +18,7 @@ import java.util.List;
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 19:54
  */
-public class CollectImageModel implements ICollectImageModel{
+public class CollectImageModel implements ICollectImageModel {
     @Override
     public void getFavoriteData(CallBack callBack) {
         WeakReference<CallBack> callBackWeakReference = new WeakReference<>(callBack);
@@ -33,10 +33,10 @@ public class CollectImageModel implements ICollectImageModel{
             @Override
             public void run() {
                 List<FavoriteEntity> favoritesTemp = favoriteDao.FindFavoriteImageByid(user_id);
-                ArrayList<FavoriteEntity> favorites=new ArrayList<>(favoritesTemp);
-                if (favorites.size()>=0){
+                ArrayList<FavoriteEntity> favorites = new ArrayList<>(favoritesTemp);
+                if (favorites.size() >= 0) {
                     callBackWeakReference.get().onSuccess(favorites);
-                }else{
+                } else {
                     callBackWeakReference.get().onError();
                 }
             }

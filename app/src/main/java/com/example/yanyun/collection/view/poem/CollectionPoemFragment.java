@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class CollectionPoemFragment extends Fragment implements ICollectionPoem {
     RecyclerView mRV;
     CollectionPoemPresenter presenter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,12 +44,12 @@ public class CollectionPoemFragment extends Fragment implements ICollectionPoem 
 
     private void initView(View view) {
         mRV = view.findViewById(R.id.rv_collection_poem);
-        presenter=new CollectionPoemPresenter(this);
+        presenter = new CollectionPoemPresenter(this);
     }
 
     @Override
     public void showError() {
-        Toast.makeText(getContext(),"发生错误",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "发生错误", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yanyun.login.presenter.LoginPresenter;
 import com.example.yanyun.R;
+import com.example.yanyun.login.presenter.LoginPresenter;
 import com.example.yanyun.main.view.MainActivity;
 import com.example.yanyun.registration.view.RegistrationActivity;
 
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mCkRememberPassWord = findViewById(R.id.ck_login_remember);
         mTvForget = findViewById(R.id.tv_login_forget);
 
-        mLoginPresenter = new LoginPresenter(this,this);
+        mLoginPresenter = new LoginPresenter(this, this);
     }
 
     @Override

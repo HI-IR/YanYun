@@ -28,6 +28,7 @@ public class RegistrationModel implements IRegistrationModel {
         hashMap.put("username", username);
         hashMap.put("password", password);
         hashMap.put("repassword", password);
-        new Net().doPost("https://www.wanandroid.com/user/register", hashMap, handler, new TypeToken<RegJson>(){}.getType());
+        new Net().doPost("https://www.wanandroid.com/user/register", hashMap, handler, new TypeToken<RegJson>() {
+        }.getType());
     }
 }

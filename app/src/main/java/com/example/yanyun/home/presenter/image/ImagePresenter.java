@@ -7,11 +7,11 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 
-import com.example.yanyun.json.ImageApiWapper;
-import com.example.yanyun.json.ImageJson;
 import com.example.yanyun.home.model.imageModel.IImageModel;
 import com.example.yanyun.home.model.imageModel.ImageModel;
 import com.example.yanyun.home.view.image.IImageView;
+import com.example.yanyun.json.ImageApiWapper;
+import com.example.yanyun.json.ImageJson;
 
 import java.lang.ref.WeakReference;
 
@@ -33,17 +33,31 @@ public class ImagePresenter {
     }
 
     public void doUpdateInfo(int count) {
-        imageModel.getPoem(handler,count);
+        imageModel.getPoem(handler, count);
     }
 
     //收藏
-    public void Collect(String content,String author){
-        imageModel.collection(content,author);
+    public void Collect(String content, String author) {
+        imageModel.collection(content, author);
     }
 
     //取消收藏
-    public void unCollect(String author){
+    public void unCollect(String author) {
         imageModel.unCollection(author);
+    }
+
+    public void isCollected(String author) {
+        imageModel.isCollected(author, new IImageModel.callback() {
+            @Override
+            public void onCollected() {
+                imageView.setCollected();
+            }
+
+            @Override
+            public void onUnCollected() {
+                imageView.setUnCollected();
+            }
+        });
     }
 
     class MyHandler extends Handler {
@@ -59,9 +73,9 @@ public class ImagePresenter {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                if (msg.obj.equals("error")){
+                if (msg.obj.equals("error")) {
                     imageView.showError("网络错误，请稍后重试");
-                }else {
+                } else {
                     ImageApiWapper<ImageJson> temp = (ImageApiWapper<ImageJson>) msg.obj;
                     if (temp.status == 1) {
 
@@ -72,21 +86,6 @@ public class ImagePresenter {
                 }
             }
         }
-    }
-
-
-    public void isCollected(String author){
-        imageModel.isCollected(author, new IImageModel.callback() {
-            @Override
-            public void onCollected() {
-                imageView.setCollected();
-            }
-
-            @Override
-            public void onUnCollected() {
-                imageView.setUnCollected();
-            }
-        });
     }
 
 }

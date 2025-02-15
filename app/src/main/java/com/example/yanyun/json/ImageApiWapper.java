@@ -22,7 +22,7 @@ public class ImageApiWapper<T> {
     @SerializedName("bing")
     public T bing;
 
-    public ImageApiWapper<T> dedecodeJson(String json, TypeToken<HistoryApiWapper<T>> typeToken){
-        return GSON.fromJson(json,typeToken.getType());
+    public ImageApiWapper<T> dedecodeJson(String json, TypeToken<HistoryApiWapper<T>> typeToken) {
+        return GSON.fromJson(json, typeToken.getType());
     }
 }

@@ -32,7 +32,8 @@ public class SayingModel implements ISayingModel {
     public void GetSaying(Handler handler) {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", "b09en9retx5ycotbpbhhxhh2y7wym8");
-        new Net().doGet("https://v3.alapi.cn/api/hitokoto", hashMap, handler,new TypeToken<SayingJson>(){}.getType());
+        new Net().doGet("https://v3.alapi.cn/api/hitokoto", hashMap, handler, new TypeToken<SayingJson>() {
+        }.getType());
     }
 
     //收藏
@@ -51,7 +52,7 @@ public class SayingModel implements ISayingModel {
 
                 //判断数据库中该用户有没有收藏这个内容
                 int count = favoriteDao.countByContent(content, user_id);
-                if (count==0){
+                if (count == 0) {
                     //没有收藏则收藏
                     FavoriteEntity saying = new FavoriteEntity(user_id, "Saying", content, author, Time.getTime());
                     favoriteDao.InsertData(saying);
@@ -72,7 +73,7 @@ public class SayingModel implements ISayingModel {
                 //取消收藏
                 YanYunDatabase db = YanYunDatabase.getDatabase();
                 FavoriteDao favoriteDao = db.getFavoriteDao();
-                favoriteDao.DeleteDataByContent(content,user_id);
+                favoriteDao.DeleteDataByContent(content, user_id);
             }
         }).start();
     }
@@ -90,11 +91,11 @@ public class SayingModel implements ISayingModel {
                 boolean flag;
                 //判断数据库中该用户有没有收藏这个内容
                 int count = favoriteDao.countByContent(content, user_id);
-                flag=(count==0)?false:true;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
+                flag = count != 0;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
 
-                if (flag){
+                if (flag) {
                     callback.onCollected();
-                }else {
+                } else {
                     callback.onUnCollected();
                 }
 

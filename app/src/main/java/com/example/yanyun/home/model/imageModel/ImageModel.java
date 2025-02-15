@@ -20,7 +20,6 @@ import com.example.yanyun.json.ImageApiWapper;
 import com.example.yanyun.json.ImageJson;
 import com.example.yanyun.utils.Net;
 import com.example.yanyun.utils.Time;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.ByteArrayOutputStream;
@@ -31,7 +30,7 @@ import java.io.ByteArrayOutputStream;
  * email : qq2420226433@outlook.com
  * date : 2025/1/22 11:08
  */
-public class ImageModel implements  IImageModel{
+public class ImageModel implements IImageModel {
     Context mContext;
 
     public ImageModel(Context mContext) {
@@ -39,10 +38,11 @@ public class ImageModel implements  IImageModel{
     }
 
     @Override
-    public void getPoem(Handler handler,int count) {
+    public void getPoem(Handler handler, int count) {
 
         //api手册上要求：https://api.no0a.cn/api/bing/day（day为0~7）
-        new Net().doGet(new StringBuilder("https://api.no0a.cn/api/bing/").append(count).toString(),handler,new TypeToken<ImageApiWapper<ImageJson>>(){}.getType());
+        new Net().doGet("https://api.no0a.cn/api/bing/" + count, handler, new TypeToken<ImageApiWapper<ImageJson>>() {
+        }.getType());
     }
 
     //收藏
@@ -61,9 +61,9 @@ public class ImageModel implements  IImageModel{
                 //判断数据库中该用户有没有收藏这个内容
                 //如果作者和版权信息相同则说明已经收藏过了该内容
                 int count = favoriteDao.countImageByAuthor(user_id, author);
-                if (count==0){
+                if (count == 0) {
                     //没有收藏则收藏;
-                    downloadSaveImg(user_id,content,author);
+                    downloadSaveImg(user_id, content, author);
                 }
             }
         }).start();
@@ -82,7 +82,7 @@ public class ImageModel implements  IImageModel{
 
                 YanYunDatabase db = YanYunDatabase.getDatabase();
                 FavoriteDao favoriteDao = db.getFavoriteDao();
-                favoriteDao.DeleteDataByAuthor(author,user_id);
+                favoriteDao.DeleteDataByAuthor(author, user_id);
             }
         }).start();
     }
@@ -100,11 +100,11 @@ public class ImageModel implements  IImageModel{
                 boolean flag;
                 //判断数据库中该用户有没有收藏这个内容
                 int count = favoriteDao.countImageByAuthor(user_id, author);
-                flag=(count==0)?false:true;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
+                flag = count != 0;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
 
-                if (flag){
+                if (flag) {
                     callback.onCollected();
-                }else {
+                } else {
                     callback.onUnCollected();
                 }
 
@@ -113,13 +113,13 @@ public class ImageModel implements  IImageModel{
     }
 
     //下载图片
-    public void downloadSaveImg(long user_id,String url,String author){
+    public void downloadSaveImg(long user_id, String url, String author) {
         Glide.with(mContext).asBitmap().load(url).into(new CustomTarget<Bitmap>() {
             @Override
             //当资源准备好时
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                ByteArrayOutputStream stream=new ByteArrayOutputStream();
-                resource.compress(Bitmap.CompressFormat.JPEG,80,stream);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                resource.compress(Bitmap.CompressFormat.JPEG, 80, stream);
                 //保存原图质量的80
 
                 // 获取压缩后的字节数组

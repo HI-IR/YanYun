@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey;
  * date : 2025/1/24 20:58
  */
 //favorites实体类的user_id和Users实体类的id相关联
-@Entity(tableName = "favorites", foreignKeys =@ForeignKey(entity = UsersEntity.class,
+@Entity(tableName = "favorites", foreignKeys = @ForeignKey(entity = UsersEntity.class,
         parentColumns = "id",
         childColumns = "user_id"),
         indices = {@Index(value = {"user_id"})})//为 user_id 列创建索引,索引能够加快数据库的查询速度
@@ -27,7 +27,7 @@ public class FavoriteEntity {
 
 
     /**
-     *type即为收藏的类型：Saying(美言),Poem(诗歌),Image(美图)
+     * type即为收藏的类型：Saying(美言),Poem(诗歌),Image(美图)
      */
     @ColumnInfo(name = "favorite_type")
     private String favoriteType;

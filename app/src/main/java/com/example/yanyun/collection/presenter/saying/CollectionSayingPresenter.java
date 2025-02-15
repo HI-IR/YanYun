@@ -1,9 +1,9 @@
 package com.example.yanyun.collection.presenter.saying;
 
-import com.example.yanyun.database.entity.FavoriteEntity;
 import com.example.yanyun.collection.model.saying.CollectSayingModel;
 import com.example.yanyun.collection.model.saying.ICollectSayingModel;
 import com.example.yanyun.collection.view.saying.ICollectionSaying;
+import com.example.yanyun.database.entity.FavoriteEntity;
 
 import java.util.ArrayList;
 
@@ -20,12 +20,12 @@ public class CollectionSayingPresenter {
 
     public CollectionSayingPresenter(ICollectionSaying iCollectionSaying) {
         this.iCollectionSaying = iCollectionSaying;
-        iCollectSayingModel= new CollectSayingModel();
+        iCollectSayingModel = new CollectSayingModel();
     }
 
     //更新收藏的数据
-    public void doUpData(){
-        iCollectSayingModel.getFavoriteData(new ICollectSayingModel. CallBack() {
+    public void doUpData() {
+        iCollectSayingModel.getFavoriteData(new ICollectSayingModel.CallBack() {
 
 
             @Override

@@ -22,7 +22,7 @@ import java.util.HashMap;
  * email : qq2420226433@outlook.com
  * date : 2025/1/21 18:01
  */
-public class PoemModel implements IPoemModel{
+public class PoemModel implements IPoemModel {
     Context mContext;
 
     public PoemModel(Context mContext) {
@@ -33,9 +33,10 @@ public class PoemModel implements IPoemModel{
     @Override
     public void GetPoem(Handler handler) {
         //带响应头的get（欸API手册里面要求的）
-        HashMap<String,String> RequestProperty = new HashMap<>();
-        RequestProperty.put("Cookie","X-User-Token=ziEwnXaMfPSEKd0P3iBRwwaqEHatdz6V");
-        new Net().doGet("https://v2.jinrishici.com/sentence",handler, new TypeToken<PoemJson>(){}.getType(),RequestProperty);
+        HashMap<String, String> RequestProperty = new HashMap<>();
+        RequestProperty.put("Cookie", "X-User-Token=ziEwnXaMfPSEKd0P3iBRwwaqEHatdz6V");
+        new Net().doGet("https://v2.jinrishici.com/sentence", handler, new TypeToken<PoemJson>() {
+        }.getType(), RequestProperty);
     }
 
     //收藏功能
@@ -53,7 +54,7 @@ public class PoemModel implements IPoemModel{
                 FavoriteDao favoriteDao = db.getFavoriteDao();
                 //判断数据库中该用户有没有收藏这个内容
                 int count = favoriteDao.countByContent(content, user_id);
-                if (count==0){
+                if (count == 0) {
                     //没有收藏则收藏
                     FavoriteEntity saying = new FavoriteEntity(user_id, "Poem", content, author, Time.getTime());
                     favoriteDao.InsertData(saying);
@@ -74,7 +75,7 @@ public class PoemModel implements IPoemModel{
                 //取消收藏
                 YanYunDatabase db = YanYunDatabase.getDatabase();
                 FavoriteDao favoriteDao = db.getFavoriteDao();
-                favoriteDao.DeleteDataByContent(content,user_id);
+                favoriteDao.DeleteDataByContent(content, user_id);
             }
         }).start();
     }
@@ -92,11 +93,11 @@ public class PoemModel implements IPoemModel{
                 boolean flag;
                 //判断数据库中该用户有没有收藏这个内容
                 int count = favoriteDao.countByContent(content, user_id);
-                flag=(count==0)?false:true;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
+                flag = count != 0;//count是否为0，为0则flag为false，未收藏，不为0则flag未true，已经收藏了
 
-                if (flag){
+                if (flag) {
                     callback.onCollected();
-                }else {
+                } else {
                     callback.onUnCollected();
                 }
 

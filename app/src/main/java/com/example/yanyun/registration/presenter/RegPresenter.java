@@ -56,10 +56,10 @@ public class RegPresenter {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                if (msg.obj.equals("error")){
+                if (msg.obj.equals("error")) {
                     iRegView.hideLoading();//取消加载条
                     iRegView.showError("网络错误，请稍后重试");
-                }else {
+                } else {
                     iRegView.hideLoading();//取消加载条
                     onDataParsed((RegJson) msg.obj);
                 }

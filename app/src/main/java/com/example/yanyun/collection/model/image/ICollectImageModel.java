@@ -13,8 +13,10 @@ import java.util.ArrayList;
 public interface ICollectImageModel {
     //获取喜欢的图
     void getFavoriteData(CallBack callBack);
-    interface CallBack{
-        void  onSuccess(ArrayList<FavoriteEntity> favorites);
-        void  onError();
+
+    interface CallBack {
+        void onSuccess(ArrayList<FavoriteEntity> favorites);
+
+        void onError();
     }
 }

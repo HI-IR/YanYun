@@ -1,5 +1,6 @@
 package com.example.yanyun.collection.presenter.Image;
 
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.yanyun.R;
-import com.example.yanyun.MyApplication;
 import com.example.yanyun.database.entity.FavoriteEntity;
 
 import java.util.ArrayList;
-import android.util.Base64;
 
 /**
  * description ： 收藏的Image的Adapter
@@ -57,15 +55,15 @@ public class CollectionImageAdapter extends RecyclerView.Adapter<CollectionImage
         return favorites.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mImg;
         TextView mCopyright;
         View view;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mImg= itemView.findViewById(R.id.tv_collection_image_image);
-            mCopyright=itemView.findViewById(R.id.tv_collection_iamge_copyright);
+            mImg = itemView.findViewById(R.id.tv_collection_image_image);
+            mCopyright = itemView.findViewById(R.id.tv_collection_iamge_copyright);
             view = itemView;
 
         }

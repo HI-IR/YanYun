@@ -5,7 +5,7 @@ import com.example.yanyun.json.ImageJson;
 
 /**
  * description ： ImageView的接口
- *  显示加载条，隐藏加载条，更新美言和作者数据，设置数据，显示错误信息，设置已收藏，设置未收藏
+ * 显示加载条，隐藏加载条，更新美言和作者数据，设置数据，显示错误信息，设置已收藏，设置未收藏
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/22 00:07

@@ -6,11 +6,12 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 
-import com.example.yanyun.json.HistoryApiWapper;
-import com.example.yanyun.json.HistoryJson;
 import com.example.yanyun.home.model.historyModel.HistoryModel;
 import com.example.yanyun.home.model.historyModel.IHistoryModel;
 import com.example.yanyun.home.view.history.IHistoryView;
+import com.example.yanyun.json.HistoryApiWapper;
+import com.example.yanyun.json.HistoryJson;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -24,14 +25,14 @@ public class HistoryPresenter {
     IHistoryModel iHistoryModel;
     IHistoryView iHistoryView;
 
-    public void doUpdateInfo(){
-        iHistoryModel.GetHistory(handler);
-    }
-
     public HistoryPresenter(IHistoryView iHistoryView) {
         this.iHistoryView = iHistoryView;
         iHistoryModel = new HistoryModel();
         handler = new MyHandler(this);
+    }
+
+    public void doUpdateInfo() {
+        iHistoryModel.GetHistory(handler);
     }
 
     class MyHandler extends Handler {
@@ -40,20 +41,20 @@ public class HistoryPresenter {
         public MyHandler(HistoryPresenter presenter) {
             super(Looper.getMainLooper());
             WeakReference<HistoryPresenter> historyPresenterWeakReference = new WeakReference<>(presenter);
-            this.presenter=historyPresenterWeakReference;
+            this.presenter = historyPresenterWeakReference;
         }
 
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 0) {
-                if (msg.obj.equals("error")){
+                if (msg.obj.equals("error")) {
                     iHistoryView.showError("网络错误，请稍后重试");
-                }else{
+                } else {
                     HistoryApiWapper<HistoryJson> temp = (HistoryApiWapper<HistoryJson>) msg.obj;
-                    if (temp.code==1){
+                    if (temp.code == 1) {
                         presenter.get().iHistoryView.setInfo(temp);
-                    }else{
+                    } else {
                         iHistoryView.showError(temp.msg);
                     }
                 }

@@ -16,9 +16,9 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.yanyun.R;
+import com.example.yanyun.home.presenter.image.ImagePresenter;
 import com.example.yanyun.json.ImageApiWapper;
 import com.example.yanyun.json.ImageJson;
-import com.example.yanyun.home.presenter.image.ImagePresenter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -64,7 +64,7 @@ public class ImageFragment extends Fragment implements IImageView {
                         if (clickCountCollection % 2 == 1) {
                             item.setIcon(R.drawable.collected);
                             imagePresenter.Collect(imgurl, copyright);
-                        }else{
+                        } else {
                             item.setIcon(R.drawable.uncollected);
                             imagePresenter.unCollect(copyright);
                         }
@@ -138,11 +138,12 @@ public class ImageFragment extends Fragment implements IImageView {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.collected);
-                clickCountCollection=1;
+                clickCountCollection = 1;
             }
         });
 
     }
+
     //设置未收藏状态（因为是其他线程回调而来的所以需要切换一下线程）
     @Override
     public void setUnCollected() {
@@ -150,7 +151,7 @@ public class ImageFragment extends Fragment implements IImageView {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.uncollected);
-                clickCountCollection=0;
+                clickCountCollection = 0;
             }
         });
     }

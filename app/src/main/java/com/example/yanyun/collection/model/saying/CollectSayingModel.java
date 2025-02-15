@@ -34,11 +34,11 @@ public class CollectSayingModel implements ICollectSayingModel {
             @Override
             public void run() {
                 List<FavoriteEntity> favoritesTemp = favoriteDao.FindFavoriteSayingByid(user_id);
-                ArrayList<FavoriteEntity> favorites=new ArrayList<>(favoritesTemp);
-                if (favorites.size()>=0){
+                ArrayList<FavoriteEntity> favorites = new ArrayList<>(favoritesTemp);
+                if (favorites.size() >= 0) {
 
                     callBackWeakReference.get().onSuccess(favorites);
-                }else{
+                } else {
                     callBackWeakReference.get().onError();
                 }
             }

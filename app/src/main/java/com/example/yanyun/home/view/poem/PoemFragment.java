@@ -1,4 +1,5 @@
 package com.example.yanyun.home.view.poem;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -7,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.yanyun.R;
-import com.example.yanyun.json.PoemJson;
 import com.example.yanyun.home.presenter.poem.PoemPresenter;
+import com.example.yanyun.json.PoemJson;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -55,7 +58,7 @@ public class PoemFragment extends Fragment implements IPoemView {
                         if (clickCount % 2 == 1) {
                             item.setIcon(R.drawable.collected);
                             String content = mTitle.getText().toString() + "|" + mContent.getText().toString();
-                            String author = "["+mDynasty.getText().toString()+"]"+mFrom.getText().toString();
+                            String author = "[" + mDynasty.getText().toString() + "]" + mFrom.getText().toString();
                             mPoemPresenter.Collect(content, author);
                         } else {
                             item.setIcon(R.drawable.uncollected);
@@ -129,11 +132,12 @@ public class PoemFragment extends Fragment implements IPoemView {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.collected);
-                clickCount=1;
+                clickCount = 1;
             }
         });
 
     }
+
     //设置未收藏状态（因为是其他线程回调而来的所以需要切换一下线程）
     @Override
     public void setUnCollected() {
@@ -141,7 +145,7 @@ public class PoemFragment extends Fragment implements IPoemView {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.uncollected);
-                clickCount=0;
+                clickCount = 0;
             }
         });
     }

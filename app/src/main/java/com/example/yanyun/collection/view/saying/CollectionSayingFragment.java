@@ -1,4 +1,5 @@
 package com.example.yanyun.collection.view.saying;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 17:04
  */
-public class CollectionSayingFragment extends Fragment implements ICollectionSaying{
+public class CollectionSayingFragment extends Fragment implements ICollectionSaying {
     RecyclerView mRV;
     CollectionSayingPresenter presenter;
 
@@ -51,7 +52,7 @@ public class CollectionSayingFragment extends Fragment implements ICollectionSay
 
     @Override
     public void showError() {
-        Toast.makeText(getContext(),"发生错误",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "发生错误", Toast.LENGTH_LONG).show();
     }
 
     @Override

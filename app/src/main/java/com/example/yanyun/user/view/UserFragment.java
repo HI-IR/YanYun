@@ -16,7 +16,6 @@ import com.example.yanyun.R;
 import com.example.yanyun.collection.view.CollectionActivity;
 import com.example.yanyun.user.presenter.UserPresenter;
 
-
 import java.util.HashMap;
 
 /**
@@ -49,24 +48,24 @@ public class UserFragment extends Fragment implements IUserFragment {
         mCvToCollection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), CollectionActivity.class);
+                Intent intent = new Intent(getActivity(), CollectionActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     private void initView(View view) {
-        presenter =new UserPresenter(this);
+        presenter = new UserPresenter(this);
         mUserName = view.findViewById(R.id.tv_user_id);
         mSayingCount = view.findViewById(R.id.tv_user_SayingCount);
-        mPoemCount =view.findViewById(R.id.tv_user_PoemCount);
-        mCvToCollection=view.findViewById(R.id.CV_user);
-        mImageCount =view.findViewById(R.id.tv_user_ImageCount);
+        mPoemCount = view.findViewById(R.id.tv_user_PoemCount);
+        mCvToCollection = view.findViewById(R.id.CV_user);
+        mImageCount = view.findViewById(R.id.tv_user_ImageCount);
     }
 
 
     @Override
-    public void setUserInfo(HashMap<String,String> counts) {
+    public void setUserInfo(HashMap<String, String> counts) {
         mUserName.setText(counts.get("UserName"));
         mImageCount.setText(counts.get("ImageCount"));
         mPoemCount.setText(counts.get("PoemCount"));

@@ -14,12 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.yanyun.R;
 import com.example.yanyun.detail.DetailActivity;
-import com.example.yanyun.json.HistoryApiWapper;
-import com.example.yanyun.json.HistoryJson;
 import com.example.yanyun.home.presenter.history.HistoryPresenter;
 import com.example.yanyun.home.presenter.history.HistoryRvAdapter;
-import com.example.yanyun.R;
+import com.example.yanyun.json.HistoryApiWapper;
+import com.example.yanyun.json.HistoryJson;
 
 import java.util.HashMap;
 
@@ -33,6 +33,7 @@ public class HistoryFragment extends Fragment implements IHistoryView {
     private ProgressBar mProgressBar;
     private RecyclerView mRecyclerView;
     private HistoryPresenter mHistoryPresenter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,13 +44,13 @@ public class HistoryFragment extends Fragment implements IHistoryView {
     }
 
     private void initEvent() {
-        mHistoryPresenter=new HistoryPresenter(this);
+        mHistoryPresenter = new HistoryPresenter(this);
         doUpdateInfo();
     }
 
     private void initView(View view) {
         mProgressBar = view.findViewById(R.id.progressBar_history);
-        mRecyclerView=view.findViewById(R.id.rv_history_content);
+        mRecyclerView = view.findViewById(R.id.rv_history_content);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class HistoryFragment extends Fragment implements IHistoryView {
     //设置信息
     @Override
     public void setInfo(HistoryApiWapper<HistoryJson> historyJson) {
-        mRecyclerView.setAdapter(new HistoryRvAdapter(historyJson,this));
+        mRecyclerView.setAdapter(new HistoryRvAdapter(historyJson, this));
         //设置线性布局
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -80,14 +81,14 @@ public class HistoryFragment extends Fragment implements IHistoryView {
 
     @Override
     public void showError(String msg) {
-        Toast.makeText(getContext(),msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void toDetail(HashMap<String, String> data) {
-        Intent intent =new Intent(getContext(), DetailActivity.class);
-        for(String i : data.keySet()){
-            intent.putExtra(i,data.get(i));
+        Intent intent = new Intent(getContext(), DetailActivity.class);
+        for (String i : data.keySet()) {
+            intent.putExtra(i, data.get(i));
         }
         startActivity(intent);
     }

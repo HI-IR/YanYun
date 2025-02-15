@@ -26,7 +26,7 @@ public class LoginPresenter implements DataCallback {
     ILoginView iLoginView;
     ILoginModel iLoginModel;
 
-    public LoginPresenter(ILoginView View,Context context) {
+    public LoginPresenter(ILoginView View, Context context) {
         iLoginView = View;
         iLoginModel = new LoginModel(context);
     }
@@ -79,11 +79,10 @@ public class LoginPresenter implements DataCallback {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                if (msg.obj .equals("error")){
+                if (msg.obj.equals("error")) {
                     iLoginView.hideLoading();
                     iLoginView.showError("网络错误，请稍后重试");
-                }
-                else {
+                } else {
                     loginPresenterWeakReference.get().onDataParsed((LoginJson) msg.obj);
                 }
             }

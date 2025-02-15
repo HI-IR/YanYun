@@ -19,9 +19,9 @@ public interface IHistoryView {
 
     void doUpdateInfo();//更新数据
 
-    public void setInfo(HistoryApiWapper<HistoryJson> historyJson);//设置数据
+    void setInfo(HistoryApiWapper<HistoryJson> historyJson);//设置数据
 
     void showError(String msg);//显示错误信息
 
-    void toDetail(HashMap<String,String> data);//跳转详情页
+    void toDetail(HashMap<String, String> data);//跳转详情页
 }

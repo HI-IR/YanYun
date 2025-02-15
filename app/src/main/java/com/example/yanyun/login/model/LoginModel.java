@@ -30,24 +30,27 @@ public class LoginModel implements ILoginModel {
 
     /**
      * 登录
+     *
      * @param username 输入的用户名
      * @param password 输入的密码
-     * @param handler presenter层传来的Handler
+     * @param handler  presenter层传来的Handler
      */
     @Override
     public void login(String username, String password, Handler handler) {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("username", username);
         hashMap.put("password", password);
-        new Net().doPost("https://www.wanandroid.com/user/login", hashMap, handler, new TypeToken<LoginJson>(){}.getType());
+        new Net().doPost("https://www.wanandroid.com/user/login", hashMap, handler, new TypeToken<LoginJson>() {
+        }.getType());
     }
 
     /**
      * 记住密码
-     * @param username  用户名
-     * @param password  密码
-     * @param shouldRemember    布尔值：是否需要记住密码
-     * @param context   上下文
+     *
+     * @param username       用户名
+     * @param password       密码
+     * @param shouldRemember 布尔值：是否需要记住密码
+     * @param context        上下文
      */
     @Override
     public void rememberPassword(String username, String password, Boolean shouldRemember, Context context) {
@@ -67,6 +70,7 @@ public class LoginModel implements ILoginModel {
 
     /**
      * 获取登录信息
+     *
      * @param dataCallback
      * @param context
      */
@@ -82,6 +86,7 @@ public class LoginModel implements ILoginModel {
 
     /**
      * 在数据库中插入用户信息
+     *
      * @param loginJson 登录的jsonbean数据
      */
     @Override
@@ -93,10 +98,10 @@ public class LoginModel implements ILoginModel {
                 UsersDao usersDao = db.getUsersDao();//打开表
 
                 String userName = usersDao.getUserName(loginJson.data.id);
-                if(userName == null){
-                    usersDao.InsertUser(new UsersEntity(loginJson.data.id,loginJson.data.publicName,loginJson.data.username));//增加登录数据
-                }else{
-                    Log.d("ld",loginJson.data.id+"");
+                if (userName == null) {
+                    usersDao.InsertUser(new UsersEntity(loginJson.data.id, loginJson.data.publicName, loginJson.data.username));//增加登录数据
+                } else {
+                    Log.d("ld", loginJson.data.id + "");
                 }
             }
         }).start();
@@ -105,9 +110,9 @@ public class LoginModel implements ILoginModel {
     //保存登录数据
     @Override
     public void saveLoginedUser(long user_id) {
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences("loginedUser",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("loginedUser", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putLong("LOGINED_USER",user_id);
+        edit.putLong("LOGINED_USER", user_id);
         edit.apply();
     }
 }

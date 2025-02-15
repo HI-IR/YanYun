@@ -13,8 +13,10 @@ import java.util.ArrayList;
 public interface ICollectSayingModel {
     //获取喜欢的言
     void getFavoriteData(CallBack callBack);
-    interface CallBack{
-        void  onSuccess(ArrayList<FavoriteEntity> favorites);
-        void  onError();
+
+    interface CallBack {
+        void onSuccess(ArrayList<FavoriteEntity> favorites);
+
+        void onError();
     }
 }

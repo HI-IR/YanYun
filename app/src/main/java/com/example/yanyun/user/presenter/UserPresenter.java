@@ -7,7 +7,7 @@ import com.example.yanyun.user.view.IUserFragment;
 import java.util.HashMap;
 
 /**
- * description ： TODO:类的作用
+ * description ： User界面的Presenter
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 23:09
@@ -21,7 +21,8 @@ public class UserPresenter {
         iUserModel = new UserModel();
     }
 
-    public void getUserInfo(){
+    //调用Model层去获取信息
+    public void getUserInfo() {
         iUserModel.getUserInfo(new IUserModel.CallBack() {
             @Override
             public void onSuccess(HashMap<String, String> counts) {

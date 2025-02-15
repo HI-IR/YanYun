@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yanyun.registration.presenter.RegPresenter;
 import com.example.yanyun.R;
 import com.example.yanyun.login.view.LoginActivity;
+import com.example.yanyun.registration.presenter.RegPresenter;
 
 public class RegistrationActivity extends AppCompatActivity implements IRegView {
     private EditText mEtUsername;

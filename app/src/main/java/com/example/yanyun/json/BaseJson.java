@@ -12,7 +12,6 @@ public class BaseJson {
     private static final Gson GSON = new Gson();
 
 
-
     /***
      * 解析json
      * @param json
@@ -21,6 +20,6 @@ public class BaseJson {
     public <T extends BaseJson> T decodeJson(String json) {
         Class<HistoryJson> historyJsonClass = HistoryJson.class;
 
-        return (T) GSON.fromJson(json,historyJsonClass);
+        return (T) GSON.fromJson(json, historyJsonClass);
     }
 }

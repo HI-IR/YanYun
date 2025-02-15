@@ -23,12 +23,11 @@
             android:fontFamily="@font/font_2"
             android:gravity="center"
             android:text="标题title"
+            android:textColor="@color/black"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            tools:layout_editor_absoluteX="135dp"
-            android:textColor="@color/black"
-            />
+            tools:layout_editor_absoluteX="135dp" />
     </LinearLayout>
 
     <TextView
@@ -84,9 +83,9 @@
     <ScrollView
         android:layout_width="344dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2">
+        app:layout_constraintTop_toTopOf="@+id/guideline11">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,8 +100,8 @@
                 android:fontFamily="@font/font_2"
                 android:gravity="start"
                 android:text="这是一个诗词内容"
-                android:textSize="30sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -156,12 +155,12 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@android:color/transparent"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconTint="@color/white"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu_2"
-        app:itemBackground="@android:color/transparent"
-        app:itemIconTint="@color/white"
 
         />
 

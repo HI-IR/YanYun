@@ -11,13 +11,17 @@ import android.os.Handler;
  */
 public interface ISayingModel {
     void GetSaying(Handler handler);//获取美言与作者数据
-    void Collection(String content,String author);//收藏功能
+
+    void Collection(String content, String author);//收藏功能
+
     void unCollection(String content);//取消收藏
 
     void isCollected(String content, Callback callback);
+
     //回调，收藏和未收藏
-    interface Callback{
+    interface Callback {
         void onCollected();
+
         void onUnCollected();
     }
 }

@@ -31,13 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tabMode="fixed"
         app:tabIndicatorColor="@color/gray"
-        app:tabSelectedTextColor="@color/gray"/>
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/gray" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp2_collection"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

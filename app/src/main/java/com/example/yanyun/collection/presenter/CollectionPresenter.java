@@ -12,20 +12,21 @@ import java.util.ArrayList;
 
 /**
  * description ：收藏页面的Presenter
- *
+ * <p>
  * author : HI-IR
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 17:59
  */
 public class CollectionPresenter {
     ICollectionActivity iCollectionActivity;
+
     //建立View层的连接
     public CollectionPresenter(ICollectionActivity iCollectionActivity) {
         this.iCollectionActivity = iCollectionActivity;
     }
 
     //初始化Collectiong页
-    public  void initView(){
+    public void initView() {
         ArrayList<FragmentInterface> fragments = new ArrayList<>();
         fragments.add(new FragmentInterface() {
             @Override

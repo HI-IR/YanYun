@@ -9,5 +9,5 @@ import androidx.fragment.app.Fragment;
  * date : 2025/1/20 19:20
  */
 public interface FragmentInterface {
-    public Fragment back();
+    Fragment back();
 }

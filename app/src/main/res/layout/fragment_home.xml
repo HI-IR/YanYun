@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,17 +10,16 @@
         android:id="@+id/tab_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
         app:tabIndicatorColor="@color/gray"
-        app:tabSelectedTextColor="@color/gray"
-        />
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/gray" />
 
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp2_home"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
 </LinearLayout>

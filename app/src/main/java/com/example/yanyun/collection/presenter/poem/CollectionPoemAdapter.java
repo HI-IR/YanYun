@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 18:24
  */
-public class CollectionPoemAdapter extends RecyclerView.Adapter<CollectionPoemAdapter.ViewHolder>{
+public class CollectionPoemAdapter extends RecyclerView.Adapter<CollectionPoemAdapter.ViewHolder> {
     ArrayList<FavoriteEntity> favorites = new ArrayList<>();
 
     public CollectionPoemAdapter(ArrayList<FavoriteEntity> favorites) {
@@ -50,14 +50,15 @@ public class CollectionPoemAdapter extends RecyclerView.Adapter<CollectionPoemAd
         return favorites.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView mContent;
         TextView mTitle;
         TextView mAuthor;
         View view;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mContent =itemView.findViewById(R.id.tv_collection_poem_content);
+            mContent = itemView.findViewById(R.id.tv_collection_poem_content);
             mAuthor = itemView.findViewById(R.id.tv_collection_poem_author);
             mTitle = itemView.findViewById(R.id.tv_collection_poem_title);
             view = itemView;

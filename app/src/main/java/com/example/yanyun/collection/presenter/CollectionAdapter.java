@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CollectionAdapter extends FragmentStateAdapter {
     ArrayList<FragmentInterface> fragments;
 
-    public CollectionAdapter(@NonNull CollectionActivity fragmentActivity,ArrayList<FragmentInterface> fragments) {
+    public CollectionAdapter(@NonNull CollectionActivity fragmentActivity, ArrayList<FragmentInterface> fragments) {
         super(fragmentActivity);
         this.fragments = fragments;
 

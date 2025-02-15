@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.yanyun.json.SayingJson;
-import com.example.yanyun.home.presenter.saying.SayingPresenter;
 import com.example.yanyun.R;
+import com.example.yanyun.home.presenter.saying.SayingPresenter;
+import com.example.yanyun.json.SayingJson;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -54,10 +54,10 @@ public class SayingFragment extends Fragment implements ISayingFragment {
                         clickCount++;
                         //如果点击数为奇数则显示收藏，为偶数则显示未收藏
 
-                        if (clickCount%2==1){
+                        if (clickCount % 2 == 1) {
                             item.setIcon(R.drawable.collected);
-                            mSayingPresenter.Collect(mContent.getText().toString(),mFrom.getText().toString());
-                        }else{
+                            mSayingPresenter.Collect(mContent.getText().toString(), mFrom.getText().toString());
+                        } else {
                             item.setIcon(R.drawable.uncollected);
                             mSayingPresenter.unCollect(mContent.getText().toString());
                         }
@@ -66,7 +66,7 @@ public class SayingFragment extends Fragment implements ISayingFragment {
                     case R.id.menu_refresh: {
                         doUpdateInfo();//更新数据
                         mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.uncollected);//更新图标
-                        clickCount=0;
+                        clickCount = 0;
                     }
                 }
                 return true;
@@ -79,8 +79,8 @@ public class SayingFragment extends Fragment implements ISayingFragment {
         mContent = view.findViewById(R.id.tv_saying_content);
         mFrom = view.findViewById(R.id.tv_saying_from);
         mProgressBar = view.findViewById(R.id.progressBar_saying);
-        mBottomNavigationView =view.findViewById(R.id.bottomNavigationView_saying);
-        mSayingPresenter = new SayingPresenter(this,getContext());
+        mBottomNavigationView = view.findViewById(R.id.bottomNavigationView_saying);
+        mSayingPresenter = new SayingPresenter(this, getContext());
         mBottomNavigationView.setItemIconTintList(null);
     }
 
@@ -118,11 +118,12 @@ public class SayingFragment extends Fragment implements ISayingFragment {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.collected);
-                clickCount=1;
+                clickCount = 1;
             }
         });
 
     }
+
     //设置未收藏状态（因为是其他线程回调而来的所以需要切换一下线程）
     @Override
     public void setUnCollected() {
@@ -130,7 +131,7 @@ public class SayingFragment extends Fragment implements ISayingFragment {
             @Override
             public void run() {
                 mBottomNavigationView.getMenu().findItem(R.id.menu_collection).setIcon(R.drawable.uncollected);
-                clickCount=0;
+                clickCount = 0;
             }
         });
     }

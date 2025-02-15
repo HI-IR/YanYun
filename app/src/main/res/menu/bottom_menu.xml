@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:id="@+id/group_divider">
-        <item android:id="@+id/menu_book"
+    <group android:id="@+id/group_divider">
+        <item
+            android:id="@+id/menu_book"
             android:icon="@drawable/book"
-            android:title="首页"/>
-        <item android:id="@+id/menu_user"
+            android:title="首页" />
+        <item
+            android:id="@+id/menu_user"
             android:icon="@drawable/user"
-            android:title="我的"/>
+            android:title="我的" />
     </group>
 </menu>

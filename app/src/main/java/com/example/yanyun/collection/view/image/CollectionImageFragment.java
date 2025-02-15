@@ -25,9 +25,10 @@ import java.util.ArrayList;
  * email : qq2420226433@outlook.com
  * date : 2025/1/25 17:13
  */
-public class CollectionImageFragment extends Fragment implements ICollectionImage{
+public class CollectionImageFragment extends Fragment implements ICollectionImage {
     RecyclerView mRV;
     CollectionImagePresenter presenter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class CollectionImageFragment extends Fragment implements ICollectionImag
 
     private void initView(View view) {
         mRV = view.findViewById(R.id.rv_collection_image);
-        presenter=new CollectionImagePresenter(this);
+        presenter = new CollectionImagePresenter(this);
     }
 
     private void initEvent() {
@@ -48,7 +49,7 @@ public class CollectionImageFragment extends Fragment implements ICollectionImag
 
     @Override
     public void showError() {
-        Toast.makeText(getContext(),"发生错误",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "发生错误", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -12,7 +12,7 @@ import java.util.Locale;
  * date : 2025/1/24 13:11
  */
 public class Time {
-    public static String getTime(){
+    public static String getTime() {
         // 获取当前时间
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();

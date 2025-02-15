@@ -3,17 +3,16 @@ package com.example.yanyun.collection.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.yanyun.FragmentInterface;
 import com.example.yanyun.R;
 import com.example.yanyun.collection.presenter.CollectionAdapter;
 import com.example.yanyun.collection.presenter.CollectionPresenter;
-import com.example.yanyun.FragmentInterface;
-
 import com.example.yanyun.main.view.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -30,17 +29,17 @@ public class CollectionActivity extends AppCompatActivity implements ICollection
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        if (intent.hasExtra("goal")){
-            switch (intent.getStringExtra("goal")){
-                case "Saying":{
+        if (intent.hasExtra("goal")) {
+            switch (intent.getStringExtra("goal")) {
+                case "Saying": {
                     mVP2.setCurrentItem(0);
                     break;
                 }
-                case "Poem":{
+                case "Poem": {
                     mVP2.setCurrentItem(1);
                     break;
                 }
-                case "Image":{
+                case "Image": {
                     mVP2.setCurrentItem(2);
                 }
 
@@ -77,7 +76,7 @@ public class CollectionActivity extends AppCompatActivity implements ICollection
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CollectionActivity.this, MainActivity.class);
-                intent.putExtra("launchSource","CollectionActivity");//声明是由CollectionActivity而来的
+                intent.putExtra("launchSource", "CollectionActivity");//声明是由CollectionActivity而来的
                 startActivity(intent);
             }
         });
@@ -87,7 +86,7 @@ public class CollectionActivity extends AppCompatActivity implements ICollection
         mCollectionPresenter = new CollectionPresenter(this);
         mTab = findViewById(R.id.tab_collection);
         mVP2 = findViewById(R.id.vp2_collection);
-        mToolbar =findViewById(R.id.toolbar_collection);
+        mToolbar = findViewById(R.id.toolbar_collection);
     }
 
     @Override
