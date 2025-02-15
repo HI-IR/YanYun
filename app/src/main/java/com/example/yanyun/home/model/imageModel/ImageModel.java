@@ -112,7 +112,7 @@ public class ImageModel implements IImageModel {
         }).start();
     }
 
-    //下载图片
+    //下载图片,并收藏
     public void downloadSaveImg(long user_id, String url, String author) {
         Glide.with(mContext).asBitmap().load(url).into(new CustomTarget<Bitmap>() {
             @Override

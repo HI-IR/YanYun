@@ -24,11 +24,14 @@ import java.util.ArrayList;
  */
 public class CollectionImageAdapter extends RecyclerView.Adapter<CollectionImageAdapter.ViewHolder> {
     ArrayList<FavoriteEntity> favorites;
+    CollectionImagePresenter collectionImagePresenter;
 
-    public CollectionImageAdapter(ArrayList<FavoriteEntity> favorites) {
+    private int clickCount = 1;
+
+    public CollectionImageAdapter(ArrayList<FavoriteEntity> favorites, CollectionImagePresenter collectionImagePresenter) {
         this.favorites = favorites;
+        this.collectionImagePresenter = collectionImagePresenter;
     }
-
 
     @NonNull
     @Override
@@ -48,6 +51,22 @@ public class CollectionImageAdapter extends RecyclerView.Adapter<CollectionImage
         //设置版权信息
 
         holder.mCopyright.setText(favoriteEntity.getFavoriteAuthor());
+
+        holder.mCollect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickCount++;
+                //如果点击数为奇数则显示收藏，为偶数则显示未收藏
+
+                if (clickCount % 2 == 1) {
+                    holder.mCollect.setImageResource(R.drawable.collected);
+                    collectionImagePresenter.Collect(favoriteEntity.getFavoriteContent(), favoriteEntity.getFavoriteAuthor());
+                } else {
+                    holder.mCollect.setImageResource(R.drawable.uncollected);
+                    collectionImagePresenter.unCollect(favoriteEntity.getFavoriteContent());
+                }
+            }
+        });
     }
 
     @Override
@@ -59,11 +78,13 @@ public class CollectionImageAdapter extends RecyclerView.Adapter<CollectionImage
         ImageView mImg;
         TextView mCopyright;
         View view;
+        ImageView mCollect;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mImg = itemView.findViewById(R.id.tv_collection_image_image);
             mCopyright = itemView.findViewById(R.id.tv_collection_iamge_copyright);
+            mCollect = itemView.findViewById(R.id.iv_collection_image_collect);
             view = itemView;
 
         }

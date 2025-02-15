@@ -14,6 +14,10 @@ public interface ICollectPoemModel {
     //获取喜欢的诗
     void getFavoriteData(CallBack callBack);
 
+    void Collect(String content, String author);
+
+    void unCollect(String content);
+
     interface CallBack {
         void onSuccess(ArrayList<FavoriteEntity> favorites);
 

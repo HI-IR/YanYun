@@ -23,6 +23,15 @@ public class CollectionSayingPresenter {
         iCollectSayingModel = new CollectSayingModel();
     }
 
+    public void Collect(String content, String author) {
+        iCollectSayingModel.Collect(content, author);
+    }
+
+    public void unCollect(String content) {
+        iCollectSayingModel.unCollect(content);
+    }
+
+
     //更新收藏的数据
     public void doUpData() {
         iCollectSayingModel.getFavoriteData(new ICollectSayingModel.CallBack() {

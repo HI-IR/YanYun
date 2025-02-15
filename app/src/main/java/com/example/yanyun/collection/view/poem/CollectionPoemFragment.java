@@ -59,7 +59,7 @@ public class CollectionPoemFragment extends Fragment implements ICollectionPoem 
             public void run() {
                 StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 mRV.setLayoutManager(layoutManager);
-                mRV.setAdapter(new CollectionPoemAdapter(favorites));
+                mRV.setAdapter(new CollectionPoemAdapter(favorites, presenter));
             }
         });
     }

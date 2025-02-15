@@ -32,12 +32,12 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/iv_collection_collect"
             app:layout_constraintTop_toBottomOf="@+id/tv_collection_saying_content"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_collection_collect"
             android:layout_width="29dp"
             android:layout_height="30dp"
             android:layout_marginEnd="4dp"

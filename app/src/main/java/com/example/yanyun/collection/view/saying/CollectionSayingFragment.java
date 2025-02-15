@@ -55,6 +55,7 @@ public class CollectionSayingFragment extends Fragment implements ICollectionSay
         Toast.makeText(getContext(), "发生错误", Toast.LENGTH_LONG).show();
     }
 
+    //设置适配器
     @Override
     public void setAdapter(ArrayList<FavoriteEntity> favorites) {
         getActivity().runOnUiThread(new Runnable() {
@@ -62,7 +63,7 @@ public class CollectionSayingFragment extends Fragment implements ICollectionSay
             public void run() {
                 StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 mRV.setLayoutManager(layoutManager);
-                mRV.setAdapter(new CollectionSayingAdapter(favorites));
+                mRV.setAdapter(new CollectionSayingAdapter(favorites, presenter));
             }
         });
     }

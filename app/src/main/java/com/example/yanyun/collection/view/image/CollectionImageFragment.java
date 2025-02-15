@@ -59,7 +59,7 @@ public class CollectionImageFragment extends Fragment implements ICollectionImag
             public void run() {
                 StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 mRV.setLayoutManager(layoutManager);
-                mRV.setAdapter(new CollectionImageAdapter(favorites));
+                mRV.setAdapter(new CollectionImageAdapter(favorites, presenter));
             }
         });
 

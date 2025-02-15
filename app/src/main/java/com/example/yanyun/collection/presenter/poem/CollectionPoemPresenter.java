@@ -37,4 +37,12 @@ public class CollectionPoemPresenter {
         });
     }
 
+    public void Collect(String content, String author) {
+        iCollectPoemModel.Collect(content, author);
+    }
+
+    public void unCollect(String content) {
+        iCollectPoemModel.unCollect(content);
+    }
+
 }

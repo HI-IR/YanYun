@@ -7,6 +7,7 @@ import com.example.yanyun.MyApplication;
 import com.example.yanyun.database.YanYunDatabase;
 import com.example.yanyun.database.dao.FavoriteDao;
 import com.example.yanyun.database.entity.FavoriteEntity;
+import com.example.yanyun.utils.Time;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -41,6 +42,50 @@ public class CollectSayingModel implements ICollectSayingModel {
                 } else {
                     callBackWeakReference.get().onError();
                 }
+            }
+        }).start();
+    }
+
+    //收藏
+    @Override
+    public void Collect(String content, String author) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                //获取目前登录的账户
+                SharedPreferences sharedPreferences = MyApplication.getContext().getSharedPreferences("loginedUser", Context.MODE_PRIVATE);
+                long user_id = sharedPreferences.getLong("LOGINED_USER", -1);
+
+                //收藏
+                YanYunDatabase db = YanYunDatabase.getDatabase();
+                FavoriteDao favoriteDao = db.getFavoriteDao();
+
+                //判断数据库中该用户有没有收藏这个内容
+                int count = favoriteDao.countByContent(content, user_id);
+                if (count == 0) {
+                    //没有收藏则收藏
+                    FavoriteEntity saying = new FavoriteEntity(user_id, "Saying", content, author, Time.getTime());
+                    favoriteDao.InsertData(saying);
+                }
+            }
+        }).start();
+    }
+
+
+    //取消收藏
+    @Override
+    public void unCollect(String content) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //获取目前登录的账户
+                SharedPreferences sharedPreferences = MyApplication.getContext().getSharedPreferences("loginedUser", Context.MODE_PRIVATE);
+                long user_id = sharedPreferences.getLong("LOGINED_USER", -1);
+                //取消收藏
+                YanYunDatabase db = YanYunDatabase.getDatabase();
+                FavoriteDao favoriteDao = db.getFavoriteDao();
+                favoriteDao.DeleteDataByContent(content, user_id);
             }
         }).start();
     }

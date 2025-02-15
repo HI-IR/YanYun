@@ -14,6 +14,10 @@ public interface ICollectImageModel {
     //获取喜欢的图
     void getFavoriteData(CallBack callBack);
 
+    void collect(String content, String author);//收藏功能
+
+    void unCollect(String content);//取消收藏
+
     interface CallBack {
         void onSuccess(ArrayList<FavoriteEntity> favorites);
 

@@ -36,4 +36,12 @@ public class CollectionImagePresenter {
             }
         });
     }
+
+    public void Collect(String content, String author) {
+        iCollectImageModel.collect(content, author);
+    }
+
+    public void unCollect(String content) {
+        iCollectImageModel.unCollect(content);
+    }
 }
