@@ -121,7 +121,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         mLoginPresenter.rememberPassword(mEtUserName.getText().toString(), mEtPassWord.getText().toString(), shouldRemember(), this);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
+
 
 
     @Override

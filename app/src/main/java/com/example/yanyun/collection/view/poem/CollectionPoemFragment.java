@@ -44,6 +44,16 @@ public class CollectionPoemFragment extends Fragment implements ICollectionPoem 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (getActivity() != null && getActivity().getWindow() != null) {
+            // 设置状态栏颜色
+            getActivity().getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+
+            // 设置状态栏图标颜色（浅色背景用黑色图标）
+            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
+
+
         View view = inflater.inflate(R.layout.fragment_collection_poem, container, false);
         initView(view);
         initEvent();
